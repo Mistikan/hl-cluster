@@ -1,0 +1,8 @@
+machine:
+  time:
+    disabled: false
+    servers:
+      - ntp0.ntp-servers.net
+      - ntp1.ntp-servers.net
+      - ntp2.ntp-servers.net
+      - ntp3.ntp-servers.net

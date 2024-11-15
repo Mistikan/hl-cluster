@@ -1,0 +1,3 @@
+---
+providerRegex: ^(anaconda)$
+bypassDnsResolution: true
