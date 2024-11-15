@@ -6,7 +6,7 @@ talosVersion: v1.8.3
 kubernetesVersion: v1.31.2
 
 clusterName: "home-kubernetes"
-endpoint: https://:6443
+endpoint: https://192.168.88.202:6443
 
 clusterPodNets:
   - "10.69.0.0/16"
@@ -39,8 +39,15 @@ nodes:
           - network: 0.0.0.0/0
             gateway: "192.168.88.1"
         mtu: 1500
-        vip:
-          ip: ""
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/i915-ucode
+            - siderolabs/intel-ucode
+            - siderolabs/zfs
+    extraManifests:
+      - "/workspaces/hl-cluster/kubernetes/bootstrap/talos/patches/anaconda/volumeconfig.yaml"
 
 # Global patches
 patches:
