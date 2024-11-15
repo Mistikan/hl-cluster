@@ -24,3 +24,9 @@ flux get sources git
 ```sh
 flux get sources helm
 ```
+
+## Talos
+### Reboot node
+```sh
+talosctl reboot -m powercycle
+```
