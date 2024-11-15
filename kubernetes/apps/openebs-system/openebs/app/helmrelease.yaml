@@ -46,3 +46,6 @@ spec:
         name: openebs-hostpath
         isDefaultClass: false
         basePath: /var/openebs/local
+    zfs-localpv:
+      zfsNode:
+        encrKeysDir: "/var/openebs/keys"
