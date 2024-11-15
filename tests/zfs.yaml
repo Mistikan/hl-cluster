@@ -1,0 +1,38 @@
+# apt-get update
+# apt-get install -y zfsutils-linux
+# zpool list
+# zfs list
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zfs-utils
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: zfs-utils
+  template:
+    metadata:
+      labels:
+        app: zfs-utils
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu
+        command: ["bash", "-c"]
+        args: ["sleep infinity"]
+        securityContext:
+          privileged: true
+          capabilities:
+            add: ["SYS_ADMIN"]
+          allowPrivilegeEscalation: true
+        volumeMounts:
+          - name: dev
+            # mountPropagation: "Bidirectional"
+            mountPath: "/dev"
+      volumes:
+        - name: dev
+          hostPath:
+            path: /dev
+            type: Directory
