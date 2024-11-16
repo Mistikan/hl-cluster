@@ -1,5 +1,5 @@
 # apt-get update
-# apt-get install -y zfsutils-linux
+# DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y zfsutils-linux
 # zpool list
 # zfs list
 ---

@@ -1,4 +1,13 @@
 # hl-cluster (homelab-cluster)
+## ZFS
+### Pool
+| Pool name | Disk     | Size |
+|-----------|----------|------|
+| storage   | kingston | 336G |
+
+### OpenEBS
+* https://openebs.io/docs/4.0.x/user-guides/local-storage-user-guide/local-pv-zfs/zfs-configuration
+
 ## Flux
 ### Обновить состояние git
 ```sh
@@ -29,4 +38,19 @@ flux get sources helm
 ### Reboot node
 ```sh
 talosctl reboot -m powercycle
+```
+
+### Services
+```sh
+talosctl services
+```
+
+# VolumeStatus (партиции)
+```sh
+talosctl get volumestatus
+```
+
+# Найденные партиции
+```sh
+talosctl get discoveredvolumes
 ```
