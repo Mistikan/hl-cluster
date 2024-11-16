@@ -37,9 +37,10 @@ TODO:
 
 ## ZFS
 ### Pool
-| Pool name | Disk     | Size |
-|-----------|----------|------|
-| storage   | kingston | 336G |
+| Pool name | Disk                             | Size |
+|-----------|----------------------------------|------|
+| storage   | KINGSTON SKC3000S512G x 1        | 336G |
+| TODO      | Seagate IronWolf ST4000NV006 x 2 | 4 TB |
 
 ### OpenEBS
 * https://openebs.io/docs/4.0.x/user-guides/local-storage-user-guide/local-pv-zfs/zfs-configuration
