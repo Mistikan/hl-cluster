@@ -3,6 +3,9 @@
 * пробросить порты для:
     * bitmagnet
     * torrent
+* https://github.com/onedr0p/home-ops/commit/81d32eb2c40307f99941af763e5f51db4a140043#diff-bc63c0dee1b104ef6491529ca31a042283876f17e384dee97b980f8e5feafb6dL13
+    * для снижения энергопотребления и поиска производительности
+* upsmon чей extensions в talos нужен
 
 ## Hardware
 TODO:
@@ -24,6 +27,10 @@ TODO:
     * TODO: ещё диски
   * KVM: KCEVE KVM401A
   * FAN: TODO - охлаждение башня и просто вентиляторы
+  * APC:
+    * Model: TODO
+    * Battery: TODO
+  * Умная розетка: Atorch S1-B/W/T/H
 * Network:
   * Mikrotik RBD52G-5HacD2HnD
 * Etc
