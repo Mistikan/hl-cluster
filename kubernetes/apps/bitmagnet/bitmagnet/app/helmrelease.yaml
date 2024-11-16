@@ -1,0 +1,44 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: bitmagnet
+  namespace: bitmagnet
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: bitmagnet
+      version: 3.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    cnpg:
+      main:
+        enabled: false
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                # TODO: переделать нормально
+                POSTGRES_NAME: bitmagnet
+                POSTGRES_USER: bitmagnet
+                POSTGRES_PASSWORD: bitmagnet
+                POSTGRES_HOST: postgres-svc.postgresql:5432
