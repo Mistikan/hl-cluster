@@ -1,4 +1,9 @@
 # hl-cluster (homelab-cluster)
+## TODO
+* пробросить порты для:
+    * bitmagnet
+    * torrent
+
 ## Hardware
 TODO:
 * Server anaconda
