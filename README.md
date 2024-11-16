@@ -2,7 +2,15 @@
 ## Hardware
 TODO:
 * Server anaconda
-* Router Mikrotik
+  * CPU: 11th Gen Intel(R) Core(TM) i5-11400 @ 2.60GHz
+  * NVME:
+    * KINGSTON SKC3000S512G - 512 GB
+  * SATA:
+    * SSD - 256GB RUN S9 256 - 256 GB
+    * HDD - WDC WD10EACS-14Z Green - 1TB
+    * TODO: ещё диски
+* Network:
+  * Mikrotik RBD52G-5HacD2HnD
 * Etc
 
 ## ZFS
