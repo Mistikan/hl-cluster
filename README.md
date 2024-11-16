@@ -6,6 +6,7 @@
 * https://github.com/onedr0p/home-ops/commit/81d32eb2c40307f99941af763e5f51db4a140043#diff-bc63c0dee1b104ef6491529ca31a042283876f17e384dee97b980f8e5feafb6dL13
     * для снижения энергопотребления и поиска производительности
 * upsmon чей extensions в talos нужен
+* https://github.com/siderolabs/talos/pull/9522 - kubevirt
 
 ## Hardware
 TODO:
