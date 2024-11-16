@@ -1,4 +1,5 @@
 ---
+# https://github.com/truecharts/public/blob/master/charts/stable/bitmagnet/values.yaml
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -41,7 +42,7 @@ spec:
                 POSTGRES_NAME: bitmagnet
                 POSTGRES_USER: bitmagnet
                 POSTGRES_PASSWORD: bitmagnet
-                POSTGRES_HOST: postgres-svc.postgresql:5432
+                POSTGRES_HOST: postgres-svc.postgresql
     configmap:
       dashboard:
         enabled: false
