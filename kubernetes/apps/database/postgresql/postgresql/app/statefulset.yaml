@@ -1,0 +1,49 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgresql
+  namespace: postgresql
+spec:
+  serviceName: postgres-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgresql
+  template:
+    metadata:
+      labels:
+        app: postgresql
+    spec:
+      enableServiceLinks: false
+      containers:
+        - name: postgresql
+          image: postgres:14-alpine
+          imagePullPolicy: "IfNotPresent"
+          args: ["-c", "config_file=/etc/postgresql/postgresql.conf"]
+          ports:
+          - containerPort: 5432
+            name: psql
+          resources:
+            requests:
+              memory: 400Mi
+              cpu: 200m
+            limits:
+              memory: 512Mi
+              cpu: 200m
+          envFrom:
+            - secretRef:
+                name: postgresql-secret
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresql-db
+              subPath: data
+            - mountPath: /etc/postgresql
+              name: postgresql-config
+      volumes:
+        - name: postgresql-db
+          persistentVolumeClaim:
+            claimName: postgresql-claim
+        - name: postgresql-config
+          configMap:
+            name: postgresql-cm

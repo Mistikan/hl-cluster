@@ -1,4 +1,10 @@
 # hl-cluster (homelab-cluster)
+## Hardware
+TODO:
+* Server anaconda
+* Router Mikrotik
+* Etc
+
 ## ZFS
 ### Pool
 | Pool name | Disk     | Size |
@@ -54,3 +60,7 @@ talosctl get volumestatus
 ```sh
 talosctl get discoveredvolumes
 ```
+
+## Links
+* https://github.com/buroa/k8s-gitops
+* https://kubesearch.dev/
