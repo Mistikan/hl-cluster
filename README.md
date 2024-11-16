@@ -38,6 +38,12 @@ TODO:
 flux reconcile source git home-kubernetes
 ```
 
+### Пересинк (помогает, если снёс релиз и надо заново накатить)
+```sh
+flux suspend kustomization --all
+flux resume kustomization --all
+```
+
 ### Получить kustomizations
 ```sh
 flux get kustomizations
