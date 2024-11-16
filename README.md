@@ -87,3 +87,4 @@ talosctl get discoveredvolumes
 ## Links
 * https://github.com/buroa/k8s-gitops
 * https://kubesearch.dev/
+* https://github.com/budimanjojo/talhelper
