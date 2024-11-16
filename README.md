@@ -2,7 +2,11 @@
 ## Hardware
 TODO:
 * Server anaconda
-  * Motherboard: Gigabyte Technology Co., Ltd. B560M DS3H/B560M DS3H, BIOS F11 12/19/2023
+  * Motherboard: Gigabyte Technology Co., Ltd. B560M DS3H
+    * [Manual](https://download.gigabyte.com/FileList/Manual/mb_manual_b560m-ds3h-ac_e_v1.pdf)
+    * BIOS:
+      * Version: F11
+      * Date: 12/19/2023
   * CPU: 11th Gen Intel(R) Core(TM) i5-11400 @ 2.60GHz
   * RAM:
     * KHX2666C16/8G
@@ -36,7 +40,7 @@ flux reconcile source git home-kubernetes
 
 ### Получить kustomizations
 ```sh
-flux get kustomizations 
+flux get kustomizations
 ```
 
 ### Получить helmrelease
@@ -52,6 +56,11 @@ flux get sources git
 ### Получить sources helm
 ```sh
 flux get sources helm
+```
+
+### Получить всё
+```sh
+flux get all
 ```
 
 ## Talos
