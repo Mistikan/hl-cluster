@@ -40,5 +40,16 @@ spec:
                 # TODO: переделать нормально
                 POSTGRES_NAME: bitmagnet
                 POSTGRES_USER: bitmagnet
-                POSTGRES_PASSWORD: bitmagnet
-                POSTGRES_HOST: postgres-svc.postgresql:5432
+                POSTGRES_PASSWORD:
+                  secretKeyRef:
+                    name: bitmagnet-postgres
+                    key: POSTGRES_PASSWORD
+                POSTGRES_HOST:
+                  secretKeyRef:
+                    name: bitmagnet-postgres
+                    key: POSTGRES_HOST
+    configmap:
+      dashboard:
+        enabled: false
+      datasource:
+        enabled: false
