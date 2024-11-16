@@ -43,6 +43,7 @@ spec:
                 POSTGRES_USER: bitmagnet
                 POSTGRES_PASSWORD: bitmagnet
                 POSTGRES_HOST: postgres-svc.postgresql
+                TMDB_ENABLED: "false"
     configmap:
       dashboard:
         enabled: false
