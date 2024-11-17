@@ -51,6 +51,12 @@ TODO:
 * [irqbalance app](https://github.com/onedr0p/home-ops/commit/81d32eb2c40307f99941af763e5f51db4a140043#diff-bc63c0dee1b104ef6491529ca31a042283876f17e384dee97b980f8e5feafb6dL13);
 * [irqbalance github](https://github.com/Irqbalance/irqbalance/);
 
+## Sops
+### Открытие файла для изменения
+```sh
+EDITOR=nano sops /workspaces/hl-cluster/kubernetes/flux/vars/cluster-secrets.sops.yaml
+```
+
 ## ZFS
 ### Pool
 | Pool name | Disk                             | Size |
