@@ -40,6 +40,10 @@ TODO:
 * Etc
 
 ## Заметки
+### Энергоэффективность (C-States)
+* https://wiki.archlinux.org/title/Powertop
+* https://selectel.ru/blog/cpu-power-management/
+
 ### Энергоэффективность (E-core/P-core)
 На моём железе не поддерживается, т.к. только с [12 поколения intel](https://www.intel.com/content/www/us/en/support/articles/000097881/processors.html).
 
