@@ -5,6 +5,8 @@ metadata:
   name: mount-part
   namespace: mount-part
 spec:
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: mount-part
