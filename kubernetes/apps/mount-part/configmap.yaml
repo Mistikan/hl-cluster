@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mount-script
+  namespace: mount-part
+data:
+  mount.sh: |
+    #!/bin/sh
+    echo "BLKID"
+    blkid
+
+    echo "MOUNT"
+    echo "TODO"
+
+    echo "SLEEP"
+    sleep infinity

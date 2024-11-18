@@ -16,8 +16,7 @@ spec:
       containers:
       - name: alpine
         image: alpine:3.20.3
-        command: ["sh", "-c"]
-        args: ["sleep infinity"]
+        command: ["/mount.sh"]
         securityContext:
           privileged: true
           capabilities:
@@ -28,6 +27,9 @@ spec:
             mountPath: "/dev"
           - name: var
             mountPath: "/var"
+          - name: mount-script
+            mountPath: /mount.sh
+            subPath: mount.sh
       volumes:
         - name: dev
           hostPath:
@@ -37,3 +39,7 @@ spec:
           hostPath:
             path: /var
             type: Directory
+        - name: mount-script
+          configMap:
+            name: mount-script
+            defaultMode: 0755
