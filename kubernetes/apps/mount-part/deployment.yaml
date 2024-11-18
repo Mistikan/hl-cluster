@@ -23,7 +23,7 @@ spec:
         securityContext:
           privileged: true
           capabilities:
-            add: ["SYS_ADMIN"]
+            add: ["SYS_ADMIN", "CAP_SYS_ADMIN"]
           allowPrivilegeEscalation: true
         volumeMounts:
           - name: dev
