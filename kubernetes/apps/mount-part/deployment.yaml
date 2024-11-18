@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mount-part
+  namespace: mount-part
+spec:
+  selector:
+    matchLabels:
+      app: mount-part
+  template:
+    metadata:
+      labels:
+        app: mount-part
+    spec:
+      containers:
+      - name: alpine
+        image: alpine:3.20.3
+        command: ["sh", "-c"]
+        args: ["sleep infinity"]
+        securityContext:
+          privileged: true
+          capabilities:
+            add: ["SYS_ADMIN"]
+          allowPrivilegeEscalation: true
+        volumeMounts:
+          - name: dev
+            mountPath: "/dev"
+          - name: var
+            mountPath: "/var"
+      volumes:
+        - name: dev
+          hostPath:
+            path: /dev
+            type: Directory
+        - name: var
+          hostPath:
+            path: /var
+            type: Directory
