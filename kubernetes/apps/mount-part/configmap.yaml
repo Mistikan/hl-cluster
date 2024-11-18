@@ -7,11 +7,15 @@ metadata:
 data:
   mount.sh: |
     #!/bin/sh
+    export ROOT_DIR="/var/mount-part"
+
     echo "BLKID"
     blkid
 
     echo "MOUNT"
-    echo "TODO"
+
+    mkdir -p $ROOT_DIR/wd_green_1tb/data
+    mount -t ext4 /dev/disk/by-uuid/f8be084d-2651-443c-a25c-21bfedc4b9e9 $ROOT_DIR/wd_green_1tb/data
 
     echo "SLEEP"
     sleep infinity

@@ -28,7 +28,7 @@ spec:
           - name: dev
             mountPath: "/dev"
           - name: var
-            mountPath: "/var"
+            mountPath: "/var/mount-part"
           - name: mount-script
             mountPath: /mount.sh
             subPath: mount.sh
@@ -39,8 +39,8 @@ spec:
             type: Directory
         - name: var
           hostPath:
-            path: /var
-            type: Directory
+            path: /var/mount-part
+            type: DirectoryOrCreate
         - name: mount-script
           configMap:
             name: mount-script
