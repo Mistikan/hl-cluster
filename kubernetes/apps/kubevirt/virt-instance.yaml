@@ -1,0 +1,81 @@
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: fedora-vm
+spec:
+  runStrategy: Manual
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: fedora-vm
+      # annotations:
+      #   kubevirt.io/allow-pod-bridge-network-live-migration: "true"
+
+    spec:
+      # evictionStrategy: LiveMigrate
+      domain:
+        cpu:
+          cores: 2
+        resources:
+          requests:
+            memory: 4G
+        devices:
+          disks:
+            - name: fedora-vm-pvc
+              disk:
+                bus: virtio
+            - name: cloudinitdisk
+              disk:
+                bus: virtio
+          interfaces:
+          - name: podnet
+            masquerade: {}
+      networks:
+        - name: podnet
+          pod: {}
+      volumes:
+        - name: fedora-vm-pvc
+          persistentVolumeClaim:
+            claimName: fedora-vm-pvc
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            networkData: |
+              network:
+                version: 1
+                config:
+                  - type: physical
+                    name: eth0
+                    subnets:
+                      - type: dhcp
+            userData: |-
+              #cloud-config
+              users:
+                - name: cloud-user
+                  ssh_authorized_keys:
+                    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCgiGMs5L1MH/seSOcHSEBuhT0xJH8yDNwqmrPiuqWC3MHa5JJcLJYEryieXkql+Lj37pW3QyqBo69D9c1NEEK6457TS3pdyzTOUf9zL4LXwYkYVCFzBNNuLxihTlvODTYVyPANaRIYWSb236G94jnaR7BWP590RVXfojRdwE1wnWroSUzIlHJSSspt4n3R+LDUNPiFUMR8rQ3CucI6Tt0N/C8HzTibfzE5nuVP/s/iXzmU1qui8hVcB5eMySFxCtDhF++bpoh9iVH5zFHAlqVEei1daTzbxNBZxPZ5rsEh4UtZe4b28oNSyE8cj+Vx4DPMMP35m+V+DpPwJQik/7o2mky60hVEjU6MxtMy7tXamwGA7rcTbClD+ZQ0Ob12OTrnhLPXpaAnDXA+0g5UCu/6eN6Dd3yQaM5MWuvWNDU+Vd6JCv2aLsDrvpoUEQnTQEjw8qgjVwcT7ZLDEii8EwJc7jI/UAW998NWOjsjRWiN5nhv9iAhDrFrhVmItafqHU= user@user-desktop
+                  sudo: ['ALL=(ALL) NOPASSWD:ALL']
+                  groups: sudo
+                  shell: /bin/bash
+              runcmd:
+                - "sudo touch /root/installed"
+                - "sudo dnf update"
+                - "sudo dnf install httpd fastfetch -y"
+                - "sudo systemctl daemon-reload"
+                - "sudo systemctl enable httpd"
+                - "sudo systemctl start --no-block httpd"
+
+  dataVolumeTemplates:
+  - metadata:
+      name: fedora-vm-pvc
+    spec:
+      storage:
+        resources:
+          requests:
+            storage: 35Gi
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: "local-path"
+      source:
+        http:
+          url: "https://fedora.mirror.wearetriple.com/linux/releases/40/Cloud/x86_64/images/Fedora-Cloud-Base-Generic.x86_64-40-1.14.qcow2"

@@ -6,7 +6,7 @@
     * torrent
 * upsmon чей extensions в talos нужен
 * подключить ИБП
-* https://github.com/siderolabs/talos/pull/9522 - kubevirt
+* kubevirt, local-path - переделать на нормальный деплой, все манифесты уже лежат
 * поменять ssh подпись в этом репозитории
 
 ## Hardware
@@ -38,6 +38,34 @@ TODO:
 * Network:
   * Mikrotik RBD52G-5HacD2HnD
 * Etc
+
+## Kubevirt
+* https://github.com/siderolabs/talos/pull/9522 - kubevirt
+
+### Get vmi
+```sh
+kubectl get vmi
+```
+
+### Delete vmi
+```sh
+kubectl delete vmi fedora-vm
+```
+
+### Start
+```sh
+./virtctl start fedora-vm
+```
+
+### Console
+```sh
+./virtctl console fedora-vm
+```
+
+### Stop
+```sh
+./virtctl stop fedora-vm
+```
 
 ## Заметки
 ### Энергоэффективность (C-States)
