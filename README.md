@@ -115,14 +115,20 @@ talosctl reboot -m powercycle
 talosctl services
 ```
 
-# VolumeStatus (партиции)
+### VolumeStatus (партиции)
 ```sh
 talosctl get volumestatus
 ```
 
-# Найденные партиции
+### Найденные партиции
 ```sh
 talosctl get discoveredvolumes
+```
+
+## WOL
+Включить сервер:
+```sh
+wakeonlan 18:C0:4D:E0:AB:B5
 ```
 
 ## Links
