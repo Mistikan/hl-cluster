@@ -9,6 +9,21 @@
 * kubevirt, local-path - переделать на нормальный деплой, все манифесты уже лежат
 * поменять ssh подпись в этом репозитории
 
+## GUI/X-Server
+1. Поставить generic-device-plugin, указав ему доступ к `/dev/dri` в качестве ресурса.
+1. Запустить pod `tests/test-dri.yaml`, в котором описан данный ресурс.
+1. Провалиться в под.
+1. Поставить X сервер. См. репозиторий: https://github.com/bedrin/docker-x-server
+1. Запустить X сервер фоном:
+  ```sh
+  /usr/bin/X :0 -nolisten tcp vt1 &
+  ```
+
+1. Запустить xclock или другое графическое приложение:
+  ```sh
+  DISPLAY=:0 xclock
+  ```
+
 ## Hardware
 TODO:
 * Server anaconda
