@@ -44,11 +44,11 @@ spec:
                 memory: 64Mi
             securityContext:
               privileged: true
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop:
-                  - ALL
+              # allowPrivilegeEscalation: false
+              # readOnlyRootFilesystem: true
+              # capabilities:
+              #   drop:
+              #     - ALL
 
     persistence:
       config:
