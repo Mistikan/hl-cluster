@@ -10,51 +10,46 @@ spec:
     spec:
       chart: app-template
       version: 3.5.1
+      interval: 30m
       sourceRef:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
   driftDetection:
     mode: enabled
-  install:
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      strategy: rollback
-      retries: 3
+
   values:
     defaultPodOptions:
       priorityClassName: system-node-critical
-      tolerations:
-        - operator: "Exists"
-          effect: "NoExecute"
-        - operator: "Exists"
-          effect: "NoSchedule"
-        - operator: "Exists"
-          effect: "PreferNoSchedule"
+
     controllers:
-      generic-device-plugin:
+      gdp:
         type: daemonset
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
+
         containers:
-          generic-device-plugin:
+          app:
             image:
               repository: ghcr.io/squat/generic-device-plugin
-              tag: latest@sha256:ba6f0b4cf6c858d6ad29ba4d32e4da11638abbc7d96436bf04f582a97b2b8821
+              tag: 36bfc606bba2064de6ede0ff2764cbb52edff70d@sha256:ba6f0b4cf6c858d6ad29ba4d32e4da11638abbc7d96436bf04f582a97b2b8821
             args:
               - --log-level=info
               - --config=/config/config.yaml
             resources:
               requests:
-                cpu: 100m
-                memory: 48Mi
+                cpu: 10m
               limits:
-                cpu: 100m
-                memory: 48Mi
+                memory: 64Mi
             securityContext:
-              privileged: true
+              # privileged: true
+              allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
+
     persistence:
       config:
         type: configMap
@@ -76,5 +71,3 @@ spec:
       var-lib-kubelet-device-plugins:
         type: hostPath
         hostPath: /var/lib/kubelet/device-plugins
-        globalMounts:
-          - readOnly: true
