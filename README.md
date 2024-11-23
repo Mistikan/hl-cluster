@@ -8,6 +8,7 @@
 * подключить ИБП
 * kubevirt, local-path - переделать на нормальный деплой, все манифесты уже лежат
 * поменять ssh подпись в этом репозитории
+* https://github.com/gimlet-io/capacitor
 
 ## GUI/X-Server
 1. Поставить generic-device-plugin, указав ему доступ к `/dev/dri` в качестве ресурса.
