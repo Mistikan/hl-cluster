@@ -14,6 +14,13 @@ devices:
 
   - name: input
     groups:
-      - count: 1
+      - count: 10
         paths:
           - path: /dev/input
+  
+  - name: tty
+    groups:
+    - paths:
+      - limit: 10
+        path: "/dev/tty0"
+      - path: "/dev/tty[1-9]"
