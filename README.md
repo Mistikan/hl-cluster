@@ -180,3 +180,4 @@ wakeonlan 18:C0:4D:E0:AB:B5
 * https://github.com/buroa/k8s-gitops
 * https://kubesearch.dev/
 * https://github.com/budimanjojo/talhelper
+* https://github.com/wavyland/wavy
