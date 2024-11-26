@@ -24,3 +24,9 @@ devices:
       - limit: 10
         path: "/dev/tty0"
       - path: "/dev/tty[1-9]"
+
+  - name: udev
+    groups:
+      - count: 1
+        paths:
+          - path: /run/udev/data
