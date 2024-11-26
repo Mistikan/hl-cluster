@@ -9,6 +9,8 @@ metadata:
   name: zfs-utils
   namespace: default
 spec:
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: zfs-utils
@@ -31,8 +33,15 @@ spec:
           - name: dev
             # mountPropagation: "Bidirectional"
             mountPath: "/dev"
+          - name: wg-green-1tb-data-torrent
+            mountPath: "/torrent"
+            readOnly: true
       volumes:
         - name: dev
           hostPath:
             path: /dev
+            type: Directory
+        - name: wg-green-1tb-data-torrent
+          hostPath:
+            path: /var/mount-part #/wd_green_1tb/data/torrent
             type: Directory
