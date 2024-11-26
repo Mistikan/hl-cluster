@@ -1,3 +1,6 @@
+# TODO: есть баг, что на момент старта контейнера usb устройства должны быть подключены
+# Сначала переключаешь kvm на пк
+# Потом стартуешь контейнер
 ---
 apiVersion: v1
 kind: Pod
@@ -8,46 +11,26 @@ spec:
   containers:
   - name: test-dri
     image: lscr.io/linuxserver/rdesktop:amd64-ubuntu-xfce
+    # TODO: в идеале надо упаковать программы и entrypoint
     command:
-      # - "/config/startwm.sh"
-      # - "/usr/bin/startxfce4"
       - "/bin/bash"
     args:
-    - "-c"
-    - "sleep infinity"
-    # startxfce4
-    # securityContext:
-    #   privileged: true
+      - "-c"
+      - "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install xinit evtest xinput xserver-xorg-input-evdev xserver-xorg-input-all -y && /usr/bin/startxfce4"
     volumeMounts:
-    # - mountPath: /dev
-    #   name: dev
-    #   readOnly: true
-    - mountPath: /run/udev/data
-      name: run-udev-data
-      readOnly: true
-    # - mountPath: /sys
-    #   name: sys
-    #   readOnly: true
+      - mountPath: /run/udev/data
+        name: run-udev-data
+        readOnly: true
+        mountPropagation: HostToContainer
     resources:
       limits:
         squat.ai/dri: 1
         squat.ai/input: 1
-    #     squat.ai/udev: 1
-        # squat.ai/tty: 1
+        # TODO: udeb никак не хочет пробрасываться через generic-device-plugin
+        # Пробросил в итоге через hostPath
+        # squat.ai/udev: 1
   volumes:
-  # - hostPath:
-  #     path: /dev
-  #     type: ""
-  #   name: dev
-  - hostPath:
-      path: /run/udev/data
-      type: ""
-    name: run-udev-data
-  # - hostPath:
-  #     path: /sys
-  #     type: ""
-  #   name: sys
-# apt-get update && apt-get install xinit xserver-xorg-input-all evtest xinput -y
-# apt-get install -y --no-install-recommends xserver-xorg-input-evdev xserver-xorg-input-all
-# xinput list
-# startxfce4
+    - hostPath:
+        path: /run/udev/data
+        type: ""
+      name: run-udev-data
