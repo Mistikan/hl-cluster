@@ -63,6 +63,11 @@ spec:
         hostPath: /dev
         globalMounts:
           - readOnly: true
+      run-udev-data:
+        type: hostPath
+        hostPath: /run/udev/data
+        globalMounts:
+          - readOnly: true
       sys:
         type: hostPath
         hostPath: /sys
