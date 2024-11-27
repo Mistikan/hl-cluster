@@ -13,3 +13,4 @@ resources:
   - ./spegel.yaml
   - ./stakater.yaml
   - ./truecharts.yaml
+  - ./grafana.yaml
