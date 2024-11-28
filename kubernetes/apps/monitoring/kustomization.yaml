@@ -8,3 +8,4 @@ resources:
   # Flux-Kustomizations
   - ./kube-prometheus-stack/ks.yaml
   - ./grafana/ks.yaml
+  - ./tuya-smartplug-exporter/ks.yaml
