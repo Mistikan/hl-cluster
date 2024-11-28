@@ -51,6 +51,8 @@ TODO:
   * Умная розетка: Atorch S1-B/W/T/H
     * Link: https://mysku.club/blog/aliexpress/100352.html
     * Android APP: Smart Life - Smart Living
+    * https://github.com/rkosegi/tuya-smartplug-exporter
+    * id, key смотри в keepassxc
 * Network:
   * Mikrotik RBD52G-5HacD2HnD
 * Etc

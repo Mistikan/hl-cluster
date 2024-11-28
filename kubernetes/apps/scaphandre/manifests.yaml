@@ -1,37 +1,4 @@
 ---
-# Source: scaphandre/templates/psp.yaml
-apiVersion: policy/v1beta1
-kind: PodSecurityPolicy
-metadata:
-  name: scaphandre
-  namespace: scaphandre
-  labels:
-    app.kubernetes.io/name: "scaphandre"
-    app.kubernetes.io/managed-by: Helm
-    helm.sh/chart: scaphandre-0.1.0
-spec:
-  privileged: true
-  allowPrivilegeEscalation: false
-  runAsUser:
-    rule: RunAsAny
-  seLinux:
-    rule: RunAsAny
-  supplementalGroups:
-    rule: 'MustRunAs'
-    ranges:
-      - min: 1
-        max: 65535
-  fsGroup:
-    rule: 'MustRunAs'
-    ranges:
-      - min: 1
-        max: 65535
-  volumes:
-  - hostPath
-  - projected
-  hostPID: true
-  hostIPC: true
----
 # Source: scaphandre/templates/service-account.yaml
 apiVersion: v1
 kind: ServiceAccount
