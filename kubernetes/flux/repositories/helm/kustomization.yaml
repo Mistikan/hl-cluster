@@ -14,3 +14,4 @@ resources:
   - ./stakater.yaml
   - ./truecharts.yaml
   - ./grafana.yaml
+  - ./rkosegi.yaml
