@@ -122,6 +122,10 @@ spec:
           revision: 4
           datasource: Prometheus
 
+        scaphandre:
+          url: https://raw.githubusercontent.com/hubblo-org/scaphandre/refs/heads/main/docs_src/tutorials/grafana-kubernetes-dashboard.json
+          datasource: Prometheus
+
       flux:
         flux-cluster:
           url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/cluster.json
