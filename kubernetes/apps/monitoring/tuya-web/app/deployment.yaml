@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tuya-web
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: tuya-web
+  template:
+    metadata:
+      labels:
+        name: tuya-web
+    spec:
+      containers:
+      - name: tuya-web
+        image: ghcr.io/mistikan/tuya-web@sha256:0abd75026219373bc60fd2842674e4f9505741b61563cfa7e4766cac46b57638
+        imagePullPolicy: IfNotPresent
+        args:
+          - "-n"
+          - "plug-anaconda"
+          - "-d"
+          - "${TUYA_ID}"
+          - "-k"
+          - "${TUYA_KEY}"
+          - "-a"
+          - "192.168.88.205"
+          - "-p"
+          - "3.4"
+        env:
+          - name: "RUST_LOG"
+            value: "warn"
+        envFrom:
+          - secretRef:
+              name: tuya-web
+        ports:
+          - containerPort: 3000
+            name: metrics
+            protocol: TCP
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
