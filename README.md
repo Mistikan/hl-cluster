@@ -46,13 +46,14 @@ TODO:
   * KVM: KCEVE KVM401A
   * FAN: TODO - охлаждение башня и просто вентиляторы
   * APC:
-    * Model: TODO
+    * Model: APC BC650-RS
     * Battery: TODO
   * Умная розетка: Atorch S1-B/W/T/H
     * Link: https://mysku.club/blog/aliexpress/100352.html
     * Android APP: Smart Life - Smart Living
     * https://github.com/rkosegi/tuya-smartplug-exporter
     * id, key смотри в keepassxc
+    * https://github.com/Mistikan/tuya-web
 * Network:
   * Mikrotik RBD52G-5HacD2HnD
 * Etc
