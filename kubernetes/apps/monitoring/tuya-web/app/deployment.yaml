@@ -19,6 +19,7 @@ spec:
         image: ghcr.io/mistikan/tuya-web:edge@sha256:c94c7f43d8423df539028fae4ba91e38749133ea579410883b975886daecce4e
         imagePullPolicy: IfNotPresent
         args:
+          - "/usr/src/app/tuya-web"
           - "-n"
           - "plug-anaconda"
           - "-d"
