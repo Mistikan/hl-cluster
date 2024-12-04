@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: tuya-web
-        image: ghcr.io/mistikan/tuya-web@sha256:0abd75026219373bc60fd2842674e4f9505741b61563cfa7e4766cac46b57638
+        image: ghcr.io/mistikan/tuya-web:edge@sha256:c94c7f43d8423df539028fae4ba91e38749133ea579410883b975886daecce4e
         imagePullPolicy: IfNotPresent
         args:
           - "-n"
