@@ -4,6 +4,7 @@ kind: ServiceMonitor
 metadata:
   name: tuya-web
   namespace: monitoring
+  # TODO: не работает
 spec:
   selector:
     matchLabels:
