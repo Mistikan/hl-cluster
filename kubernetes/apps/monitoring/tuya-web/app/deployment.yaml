@@ -8,11 +8,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: tuya-web
+      app: tuya-web
   template:
     metadata:
       labels:
-        name: tuya-web
+        app: tuya-web
     spec:
       containers:
       - name: tuya-web
