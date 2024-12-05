@@ -122,7 +122,12 @@ EDITOR=nano sops /workspaces/hl-cluster/kubernetes/flux/vars/cluster-secrets.sop
     sops -e -i /workspaces/hl-cluster/kubernetes/$PATH/secret.sops.yaml
     ```
 
+1. Обнови kustomization: https://fluxcd.io/flux/guides/mozilla-sops/#gitops-workflow
+
 1. Сохраняешь под гит.
+
+### Ссылки
+* https://fluxcd.io/flux/guides/mozilla-sops/
 
 ## ZFS
 ### Pool

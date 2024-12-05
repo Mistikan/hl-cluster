@@ -18,3 +18,7 @@ spec:
     kind: GitRepository
     name: home-kubernetes
   wait: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: tuya-web
