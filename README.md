@@ -1,5 +1,6 @@
 # hl-cluster (homelab-cluster)
 ## TODO
+* kubeconform - баг с dns резолвингом
 * прикрутить домен
 * пробросить порты для:
     * bitmagnet
