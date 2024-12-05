@@ -21,4 +21,4 @@ spec:
   decryption:
     provider: sops
     secretRef:
-      name: tuya-web
+      name: sops-age

@@ -123,6 +123,14 @@ EDITOR=nano sops /workspaces/hl-cluster/kubernetes/flux/vars/cluster-secrets.sop
     ```
 
 1. Обнови kustomization: https://fluxcd.io/flux/guides/mozilla-sops/#gitops-workflow
+    ```yaml
+    ...
+    decryption:
+      provider: sops
+      secretRef:
+        name: sops-age # Это секрет, с помощью которого дешифруют, а не который требуется расшифровать
+    ...
+    ```
 
 1. Сохраняешь под гит.
 
