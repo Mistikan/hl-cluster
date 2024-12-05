@@ -104,6 +104,25 @@ kubectl delete vmi fedora-vm
 EDITOR=nano sops /workspaces/hl-cluster/kubernetes/flux/vars/cluster-secrets.sops.yaml
 ```
 
+### Шифрование файла
+1. Создаешь файл с именем `.sops\.ya?ml` (см. конфиг `.sops.yaml`). Например, `secret.sops.yaml`.
+
+1. Вписываешь в него обычный манифест как обычно это делаешь:
+    ```yaml
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: dotfile-secret
+    data:
+      .secret-file: dmFsdWUtMg0KDQo=
+    ```
+1. Непосредственно шифруешь (вставь свой путь):
+    ```sh
+    sops -e -i /workspaces/hl-cluster/kubernetes/$PATH/secret.sops.yaml
+    ```
+
+1. Сохраняешь под гит.
+
 ## ZFS
 ### Pool
 | Pool name | Disk                             | Size |
