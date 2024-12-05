@@ -16,21 +16,12 @@ spec:
     spec:
       containers:
       - name: tuya-web
-        image: ghcr.io/mistikan/tuya-web:edge@sha256:c94c7f43d8423df539028fae4ba91e38749133ea579410883b975886daecce4e
+        image: ghcr.io/mistikan/tuya-web@sha256:8cdd1340b4a61403392c4a59e0566dd42de789e55bd33724c265b9d9137cf545
         imagePullPolicy: IfNotPresent
-        # TODO: не хочет считывать, надо переделывать и дорабатывать конфиг
         args:
           - "/usr/src/app/tuya-web"
-          - "-n"
-          - "plug-anaconda"
-          - "-d"
-          - "${TUYA_ID}"
-          - "-k"
-          - "${TUYA_KEY}"
-          - "-a"
-          - "192.168.88.205"
-          - "-p"
-          - "3.4"
+          - "--config"
+          - "/data/config.yaml"
         env:
           - name: "RUST_LOG"
             value: "warn"
@@ -45,3 +36,10 @@ spec:
           requests:
             cpu: 50m
             memory: 64Mi
+        volumeMounts:
+          - name: tuya-web
+            mountPath: /data
+    volumes:
+      - name: tuya-web
+        secret:
+          secretName: tuya-web
