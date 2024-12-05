@@ -39,7 +39,7 @@ spec:
         volumeMounts:
           - name: tuya-web
             mountPath: /data
-    volumes:
-      - name: tuya-web
-        secret:
-          secretName: tuya-web
+      volumes:
+        - name: tuya-web
+          secret:
+            secretName: tuya-web
