@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: tuya-web
   namespace: monitoring
+  labels:
+    app: tuya-web
 spec:
   type: ClusterIP
   ports:
