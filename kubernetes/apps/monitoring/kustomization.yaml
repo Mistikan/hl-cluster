@@ -9,3 +9,4 @@ resources:
   - ./kube-prometheus-stack/ks.yaml
   - ./grafana/ks.yaml
   - ./tuya-web/ks.yaml
+  - ./node-exporter/ks.yaml
