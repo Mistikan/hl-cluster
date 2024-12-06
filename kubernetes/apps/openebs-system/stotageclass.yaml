@@ -7,3 +7,4 @@ parameters:
   fstype: "zfs"
   poolname: "storage"
 provisioner: zfs.csi.openebs.io
+allowVolumeExpansion: true
