@@ -106,6 +106,8 @@ spec:
             - name: DS_PROMETHEUS
               value: Prometheus
 
+        # TODO: добавить tuya exporter в github проекта и прокинуть сюда json
+
         volsync:
           # removate: dashboardName="VolSync Dashboard"
           gnetId: 21356
