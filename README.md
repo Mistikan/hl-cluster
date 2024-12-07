@@ -7,7 +7,16 @@
 * upsmon чей extensions в talos нужен
 * подключить ИБП
 * kubevirt, local-path - переделать на нормальный деплой, все манифесты уже лежат
-* поменять ssh подпись в этом репозитории
+* поменять ssh подпись в этом репозитории:
+  ```sh
+  user@user-Vostro-5502:~/projects/github$ cd Mistikan/
+  user@user-Vostro-5502:~/projects/github/Mistikan$ git clone git@github.com:Mistikan/hl-cluster.git
+  user@user-Vostro-5502:~/projects/github/Mistikan$ cd hl-cluster/
+  user@user-Vostro-5502:~/projects/github/Mistikan/hl-cluster$ git config user.email 
+  sereja.ermeikin@google.com
+  ```
+  Настройки перечитаются, если репу переклонировать.
+  Надо подумать над github настройками и переклонировать все репы.
 * https://github.com/gimlet-io/capacitor
 
 ## GUI/X-Server
