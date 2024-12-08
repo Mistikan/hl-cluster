@@ -71,7 +71,7 @@ spec:
           enabled: true
           namespaceSelector:
             any: true
-      extraArgs:
+      # extraArgs:
         # TODO: add certificate
         # default-ssl-certificate: network/devbu-io-tls
       terminationGracePeriodSeconds: 120
