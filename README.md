@@ -1,5 +1,12 @@
 # hl-cluster (homelab-cluster)
 ## TODO
+* установка ingress-nginx. Как это делается:
+  * ставится https://github.com/onedr0p/home-ops/tree/main/kubernetes/main/apps/network/nginx/internal в первозданном виде:
+    * нужно сразу IP, который будет обслуживать внутренние запросы отделать от кубера. Будет что-то на уровне плавающего IP
+    * при необходимости можно прикрутить external-dns к микроту, чтобы там обновлялись A записи
+      * https://github.com/mirceanton/external-dns-provider-mikrotik
+    * в микроте настроить все записи с доменом на внутренний хост
+  * добавляются ингрессы, им ставится метка с internal - примеров в репозитории достаточно
 * прикрутить домен
 * пробросить порты для:
     * bitmagnet
