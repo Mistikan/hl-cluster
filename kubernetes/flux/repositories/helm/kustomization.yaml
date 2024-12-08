@@ -5,6 +5,8 @@ resources:
   - ./bjw-s.yaml
   - ./cilium.yaml
   - ./coredns.yaml
+  - ./grafana.yaml
+  - ./ingress-nginx.yaml
   - ./jetstack.yaml
   - ./metrics-server.yaml
   - ./openebs.yaml
@@ -13,5 +15,4 @@ resources:
   - ./spegel.yaml
   - ./stakater.yaml
   - ./truecharts.yaml
-  - ./grafana.yaml
   - ./rkosegi.yaml
