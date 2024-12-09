@@ -107,6 +107,7 @@ spec:
               value: Prometheus
 
         # TODO: добавить tuya exporter в github проекта и прокинуть сюда json
+        # IMPORTANT: если неправильно накатится релиз, то будет откат - ручные нарисованные дашборды слетят. По этой причине обязательно json
 
         volsync:
           # removate: dashboardName="VolSync Dashboard"
