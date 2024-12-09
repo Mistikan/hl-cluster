@@ -233,3 +233,4 @@ wakeonlan 18:C0:4D:E0:AB:B5
 * https://kubesearch.dev/
 * https://github.com/budimanjojo/talhelper
 * https://github.com/wavyland/wavy
+* https://budimanjojo.com/2021/10/27/variable-substitution-in-flux-gitops/ - принцип работы SECRET_DOMAIN
