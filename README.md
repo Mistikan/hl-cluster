@@ -25,6 +25,7 @@
   Настройки перечитаются, если репу переклонировать.
   Надо подумать над github настройками и переклонировать все репы.
 * https://github.com/gimlet-io/capacitor
+* https://github.com/ahgraber/homelab-gitops-k3s/tree/main/kubernetes/apps/default/homepage
 
 ## GUI/X-Server
 1. Поставить generic-device-plugin, указав ему доступ к `/dev/dri` в качестве ресурса.
