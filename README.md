@@ -26,6 +26,7 @@
   Надо подумать над github настройками и переклонировать все репы.
 * https://github.com/gimlet-io/capacitor
 * https://github.com/ahgraber/homelab-gitops-k3s/tree/main/kubernetes/apps/default/homepage
+* DNS - внутренние сервисы должны резолвится по внутренним IP как для ethernet, так и для wifi подключений со стороны ноутбука, телефона и т.д..
 
 ## GUI/X-Server
 1. Поставить generic-device-plugin, указав ему доступ к `/dev/dri` в качестве ресурса.
@@ -56,8 +57,13 @@ TODO:
     * KHX2666C16/8G
   * NVME:
     * KINGSTON SKC3000S512G - 512 GB
+      * https://www.kingston.com/datasheets/KC3000_ru.pdf
+      * https://smarthdd.com/database/KINGSTON-SKC3000S512G/
   * SATA:
     * SSD - 256GB RUN S9 256 - 256 GB
+      * SSD Digma SATA III 256Gb DGSR1256GS93T
+      * https://digma.ru/catalog/it-products/components/ssd/ssd-digma-sata-iii-256gb-dgsr1256gs93t-run-s9-m-2-2280-1800620/
+      * https://www.nix.ru/autocatalog/ssd/SSD-256-Gb-M2-2280-B-M-6Gb-s-Digma-RUN-S9-DGSR1256GS93T-3D-TLC-1800620_687471.html
     * HDD - WDC WD10EACS-14Z Green - 1TB
     * TODO: ещё диски
   * KVM: KCEVE KVM401A
