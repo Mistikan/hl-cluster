@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
 ---
+# Почему-то talhelper багует, не признает версии talosVersion
+# Как решение:
+# * обновить образ .devcontainer от onedr0p
+# * скачать talhelper и использовать локально (./talhelper)
 # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
 talosVersion: v1.9.0
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
@@ -27,7 +31,11 @@ nodes:
     ipAddress: "192.168.88.202"
     installDiskSelector:
       serial: "50026B76862410D9"
-    talosImageURL: factory.talos.dev/installer/da6e5e640e48d2c9f1ba22aa3f205e17a687512b7201cff5c5c47ef0fab32cb1
+    # talosctl ls /lib/modules/6.6.60-talos/extras
+    kernelModules:
+      - name: zfs
+    # https://factory.talos.dev/?arch=amd64&cmdline-set=true&extensions=-&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fnut-client&extensions=siderolabs%2Fzfs&platform=metal&target=metal&version=1.9.0
+    talosImageURL: factory.talos.dev/installer/074b51f558ed9001b5ef74368dde46a0ecbb90d3a834c461c79994bc2415c344
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -43,8 +51,9 @@ nodes:
       customization:
         systemExtensions:
           officialExtensions:
-            - siderolabs/i915-ucode
+            - siderolabs/i915
             - siderolabs/intel-ucode
+            - siderolabs/nut-client
             - siderolabs/zfs
     extraManifests:
       - "/workspaces/hl-cluster/kubernetes/bootstrap/talos/patches/anaconda/volumeconfig.yaml"
