@@ -19,7 +19,7 @@
   user@user-Vostro-5502:~/projects/github$ cd Mistikan/
   user@user-Vostro-5502:~/projects/github/Mistikan$ git clone git@github.com:Mistikan/hl-cluster.git
   user@user-Vostro-5502:~/projects/github/Mistikan$ cd hl-cluster/
-  user@user-Vostro-5502:~/projects/github/Mistikan/hl-cluster$ git config user.email 
+  user@user-Vostro-5502:~/projects/github/Mistikan/hl-cluster$ git config user.email
   sereja.ermeikin@google.com
   ```
   Настройки перечитаются, если репу переклонировать.
@@ -43,6 +43,25 @@
   DISPLAY=:0 xclock
   ```
 
+## Быстрое выключение GUI и другого лишнего на ubuntu
+```sh
+# Console
+sudo systemctl isolate multi-user.target
+
+# GPU
+echo 1 > /sys/bus/pci/devices/0000\:00\:02.0/remove
+# Audio
+echo 1 > /sys/bus/pci/devices/0000\:00\:1f.3/remove
+# USB
+echo 1 > /sys/bus/pci/devices/0000\:00\:14.0/remove
+
+rmmod i915
+rmmod xe
+rmmod video
+```
+
+* [Is there any way to disable GUI from even loading while starting the machine without uninstalling GUI completely ?](https://www.reddit.com/r/Ubuntu/comments/qy1lbj/is_there_any_way_to_disable_gui_from_even_loading/)
+
 ## Hardware
 TODO:
 * Server anaconda
@@ -51,6 +70,9 @@ TODO:
     * BIOS:
       * Version: F11
       * Date: 12/19/2023
+    * FAN control chip: it8689e
+      * https://github.com/frankcrawford/it87
+      * https://forum.manjaro.org/t/unable-to-control-fan-on-gigabyte-b560m-ds3h-v2-chip-it8689/99930
   * CPU: 11th Gen Intel(R) Core(TM) i5-11400 @ 2.60GHz
   * RAM:
     * KHX2666C16/8G
