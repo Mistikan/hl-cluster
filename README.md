@@ -55,6 +55,13 @@ CONFIG_MCB_LPC=m
 CONFIG_DWC_PCIE_PMU=m
 ```
 
+И ещё IT87:
+```
+CONFIG_GPIO_IT87=m
+CONFIG_SENSORS_IT87=m
+CONFIG_IT87_WDT=m
+```
+
 Ссылки:
 * https://github.com/fenrus75/powertop/blob/master/README.md#kernel-parameters-and-optional-patches
 
