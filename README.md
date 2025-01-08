@@ -28,6 +28,36 @@
 * https://github.com/ahgraber/homelab-gitops-k3s/tree/main/kubernetes/apps/default/homepage
 * DNS - внутренние сервисы должны резолвится по внутренним IP как для ethernet, так и для wifi подключений со стороны ноутбука, телефона и т.д..
 
+## POWERTOP
+### Включение kernel опций
+Лучше конечно включить через y, а не модуль.
+```
+CONFIG_SND_AC97_POWER_SAVE=y
+CONFIG_SND_AC97_POWER_SAVE_DEFAULT=0
+
+CONFIG_PM_GENERIC_DOMAINS=y
+CONFIG_WQ_POWER_EFFICIENT_DEFAULT=y
+CONFIG_PM_GENERIC_DOMAINS_SLEEP=y
+CONFIG_ENERGY_MODEL=y
+
+CONFIG_X86_MSR=y
+CONFIG_X86_5LEVEL=y
+
+CONFIG_POWERCAP=y
+CONFIG_INTEL_RAPL_CORE=m
+CONFIG_INTEL_RAPL=m
+CONFIG_INTEL_RAPL_TPMI=m
+CONFIG_IDLE_INJECT=y
+CONFIG_MCB=m
+CONFIG_MCB_PCI=m
+CONFIG_MCB_LPC=m
+
+CONFIG_DWC_PCIE_PMU=m
+```
+
+Ссылки:
+* https://github.com/fenrus75/powertop/blob/master/README.md#kernel-parameters-and-optional-patches
+
 ## GUI/X-Server
 1. Поставить generic-device-plugin, указав ему доступ к `/dev/dri` в качестве ресурса.
 1. Запустить pod `tests/test-dri.yaml`, в котором описан данный ресурс.
@@ -73,6 +103,13 @@ TODO:
     * FAN control chip: it8689e
       * https://github.com/frankcrawford/it87
       * https://forum.manjaro.org/t/unable-to-control-fan-on-gigabyte-b560m-ds3h-v2-chip-it8689/99930
+      * https://github.com/lm-sensors/lm-sensors/issues/154
+      * https://gitlab.com/coolercontrol/coolercontrol
+      * Загрузка:
+        ```sh
+        modprobe it87 force_id=0x8628 ignore_resource_conflict=1
+        sensors # it8628-isa-0a40
+        ```
   * CPU: 11th Gen Intel(R) Core(TM) i5-11400 @ 2.60GHz
   * RAM:
     * KHX2666C16/8G
