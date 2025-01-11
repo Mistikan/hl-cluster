@@ -28,6 +28,26 @@
 * https://github.com/ahgraber/homelab-gitops-k3s/tree/main/kubernetes/apps/default/homepage
 * DNS - внутренние сервисы должны резолвится по внутренним IP как для ethernet, так и для wifi подключений со стороны ноутбука, телефона и т.д..
 
+# Сборка ядра и образа talos
+```sh
+# В репозитории pkgs
+# https://www.talos.dev/v1.9/advanced/customizing-the-kernel/
+git clone https://github.com/siderolabs/pkgs.git
+cd pkgs
+git checkout release-1.9
+make kernel-menuconfig PLATFORM=linux/amd64
+make kernel PUSH=true REGISTRY=xlab.xlab12.ru USERNAME=ermeikinsv PLATFORM=linux/amd64
+
+# В репозитории talos
+# Добавить/убрать модуль можно в файле hack/modules-amd64.txt
+# https://www.talos.dev/v1.9/advanced/building-images/
+git clone https://github.com/siderolabs/talos.git
+cd talos
+git checkout v1.9.0
+make kernel initramfs PKG_KERNEL=xlab.xlab12.ru/ermeikinsv/kernel:v1.9.0-15-g45c4ba4-dirty PLATFORM=linux/amd64
+make imager PKG_KERNEL=xlab.xlab12.ru/ermeikinsv/kernel:v1.9.0-15-g45c4ba4-dirty PLATFORM=linux/amd64 INSTALLER_ARCH=targetarch IMAGE_REGISTRY=xlab.xlab12.ru USERNAME=ermeikinsv PUSH=true
+```
+
 ## POWERTOP
 ### Включение kernel опций
 Лучше конечно включить через y, а не модуль.
