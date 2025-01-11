@@ -28,6 +28,19 @@
 * https://github.com/ahgraber/homelab-gitops-k3s/tree/main/kubernetes/apps/default/homepage
 * DNS - внутренние сервисы должны резолвится по внутренним IP как для ethernet, так и для wifi подключений со стороны ноутбука, телефона и т.д..
 
+# ВАЖНО: TALOS KERNEL
+Собрал первое ядро.
+
+Директории на ноутбуке:
+* /home/user/projects/pkgs
+* /home/user/projects/talos/talos
+
+Собранное ядро и образ лежат в проектах (Container registry):
+* https://xlab.xlab12.ru/ermeikinsv/kernel
+* https://xlab.xlab12.ru/ermeikinsv/imager
+
+Требуется перепулить образ в публичное место и указать его в конфигурации талоса с последующим применением.
+
 # Сборка ядра и образа talos
 ```sh
 # В репозитории pkgs
