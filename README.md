@@ -43,13 +43,17 @@
 
 # Сборка ядра и образа talos
 ```sh
+# Проверь, что у тебя работает push в ghcr.io/mistikan/
+
 # В репозитории pkgs
 # https://www.talos.dev/v1.9/advanced/customizing-the-kernel/
 git clone https://github.com/siderolabs/pkgs.git
 cd pkgs
 git checkout release-1.9
 make kernel-menuconfig PLATFORM=linux/amd64
-make kernel PUSH=true REGISTRY=xlab.xlab12.ru USERNAME=ermeikinsv PLATFORM=linux/amd64
+make kernel PUSH=true REGISTRY=ghcr.io USERNAME=mistikan PLATFORM=linux/amd64
+
+# Утилита dive - посмотреть содержимое образа
 
 # В репозитории talos
 # Добавить/убрать модуль можно в файле hack/modules-amd64.txt
@@ -57,8 +61,11 @@ make kernel PUSH=true REGISTRY=xlab.xlab12.ru USERNAME=ermeikinsv PLATFORM=linux
 git clone https://github.com/siderolabs/talos.git
 cd talos
 git checkout v1.9.0
-make kernel initramfs PKG_KERNEL=xlab.xlab12.ru/ermeikinsv/kernel:v1.9.0-15-g45c4ba4-dirty PLATFORM=linux/amd64
-make imager PKG_KERNEL=xlab.xlab12.ru/ermeikinsv/kernel:v1.9.0-15-g45c4ba4-dirty PLATFORM=linux/amd64 INSTALLER_ARCH=targetarch IMAGE_REGISTRY=xlab.xlab12.ru USERNAME=ermeikinsv PUSH=true
+make kernel initramfs PKG_KERNEL=ghcr.io/mistikan/kernel:v1.9.0-21-gc1f06e5-dirty PLATFORM=linux/amd64
+make imager PKG_KERNEL=ghcr.io/mistikan/kernel:v1.9.0-21-gc1f06e5-dirty PLATFORM=linux/amd64 INSTALLER_ARCH=targetarch IMAGE_REGISTRY=ghcr.io USERNAME=mistikan PUSH=true
+
+# Обновление
+talosctl --nodes anaconda upgrade --image="ghcr.io/mistikan/imager:v1.9.2-dirty" --timeout=10m
 ```
 
 ## POWERTOP
@@ -149,6 +156,10 @@ TODO:
         ```sh
         modprobe it87 force_id=0x8628 ignore_resource_conflict=1
         sensors # it8628-isa-0a40
+        ```
+      * talos:
+        ```sh
+        talosctl ls /sys/devices/platform/it87.2624
         ```
   * CPU: 11th Gen Intel(R) Core(TM) i5-11400 @ 2.60GHz
   * RAM:
