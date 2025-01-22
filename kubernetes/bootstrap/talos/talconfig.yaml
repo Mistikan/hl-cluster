@@ -7,9 +7,9 @@
 #   wget https://github.com/budimanjojo/talhelper/releases/download/v3.0.16/talhelper_linux_amd64.tar.gz
 #   tar -xvzf talhelper_linux_amd64.tar.gz talhelper
 # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
-talosVersion: v1.9.0
+talosVersion: v1.9.2
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-kubernetesVersion: v1.31.4
+kubernetesVersion: v1.31.5
 
 clusterName: "home-kubernetes"
 endpoint: https://192.168.88.202:6443
@@ -36,6 +36,10 @@ nodes:
     # talosctl ls /lib/modules/6.6.60-talos/extras
     kernelModules:
       - name: zfs
+      - name: it87
+        parameters:
+          - ignore_resource_conflict=1
+          - force_id=0x8628
     # https://factory.talos.dev/?arch=amd64&cmdline-set=true&extensions=-&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fnut-client&extensions=siderolabs%2Fzfs&platform=metal&target=metal&version=1.9.0
     # talosImageURL: factory.talos.dev/installer/074b51f558ed9001b5ef74368dde46a0ecbb90d3a834c461c79994bc2415c344
     # К сожалению, task не поддерживает кастомные образы - дёргай вручную
