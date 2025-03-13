@@ -1,4 +1,47 @@
 # hl-cluster (homelab-cluster)
+## TODO AUTOASPM - внедрить
+```yaml
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: autoaspm
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: autoaspm
+  template:
+    metadata:
+      labels:
+        name: autoaspm
+    spec:
+      initContainers:
+      - name: autoaspm
+        image: ghcr.io/mistikan/autoaspm:1.0.4
+        securityContext:
+          privileged: true
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: 100m
+          requests:
+            cpu: 100m
+            memory: 100Mi
+      containers:
+      - name: sleep
+        image: ghcr.io/mistikan/autoaspm:1.0.4
+        command: ["/bin/sh", "-c", "sleep infinity"]
+        resources:
+          limits:
+            memory: 25Mi
+            cpu: 10m
+          requests:
+            cpu: 10m
+            memory: 25M
+      terminationGracePeriodSeconds: 30
+```
+
 ## TODO
 * установка ingress-nginx. Как это делается:
   * ставится https://github.com/onedr0p/home-ops/tree/main/kubernetes/main/apps/network/nginx/internal в первозданном виде:
