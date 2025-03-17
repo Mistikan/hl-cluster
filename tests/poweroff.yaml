@@ -1,0 +1,29 @@
+# kubectl exec -ti poweroff -- poweroff
+# Вырубается конечно не очень быстро...
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: poweroff
+spec:
+  containers:
+  - name: debian
+    image: debian:latest
+    command: ["sleep", "inf"]
+    # securityContext:
+    #   privileged: true
+    #   capabilities:
+    #     add: ["SYS_ADMIN"]
+    #   allowPrivilegeEscalation: true
+    volumeMounts:
+    - name: host-system
+      mountPath: /system/run/machined
+    - name: host-sbin
+      mountPath: /sbin
+  volumes:
+  - name: host-system
+    hostPath:
+      path: /system/run/machined
+  - name: host-sbin
+    hostPath:
+      path: /sbin

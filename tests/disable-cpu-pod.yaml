@@ -1,0 +1,57 @@
+# https://github.com/containerd/containerd/issues/8445#issuecomment-1813972850
+# https://clsv.ru/linux/pogovorim_o_rezhimax_rabota_proczessora_i_upravleniya_imi_23
+# apt-get update
+# apt-get install linux-cpupower -y
+# cpupower frequency-set -g powersave
+# cpupower monitor
+# cpupower frequency-set --max 800000 # Set 800 MHz
+
+# Возможно, надо сделать: mount -t debugfs none /sys/kernel/debug 
+# Но есть подозрение, что powertop сам сделает
+# apt-get install powertop kmod -y
+# powertop --calibrate
+# powertop --auto-tune
+# CONFIG_MODULE_UNLOAD is not set - нельзя выгружать модули
+#  - надо обновить talos до 1.9.0 - там включено. 
+#   https://github.com/siderolabs/pkgs/commit/a1709c76db4ba70de526d7eec18c6b0637ebf7b0
+# CONFIG_X86_MSR - Model-specific registers (MSR)                   not found (try enabling CONFIG_X86_MSR).
+#  - ещё надо /dev/cpu пробросить в pod
+# https://www.virtualizationhowto.com/2024/09/low-power-server-with-powertop-proxmox/ 
+# https://www.talos.dev/v1.8/advanced/customizing-the-kernel/
+
+# Metric: tuya_smartplug_power
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sysfs-bindmount
+spec:
+  containers:
+  - name: debian
+    image: debian:latest
+    command: ["sleep", "inf"]
+    securityContext:
+      privileged: true
+      capabilities:
+        add: ["SYS_ADMIN"]
+      allowPrivilegeEscalation: true
+    volumeMounts:
+    - name: host-sysfs
+      # mountPath: /hostsys
+      mountPath: /sys
+    - name: host-procfs
+      # mountPath: /hostsys
+      mountPath: /proc
+    - name: host-sbin
+      # mountPath: /hostsys
+      mountPath: /sbin
+  volumes:
+  - name: host-sysfs
+    hostPath:
+      path: /sys
+  - name: host-procfs
+    hostPath:
+      path: /proc
+  - name: host-sbin
+    hostPath:
+      path: /sbin

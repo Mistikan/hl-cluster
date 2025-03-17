@@ -1,7 +1,15 @@
 # apt-get update
-# DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y zfsutils-linux
+# DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y zfsutils-linux kmod
 # zpool list
 # zfs list
+
+# fwupd for bios
+# apt-get install fwupd
+# Не заработает - надо поднять сервис fwupd
+# fwupdmgr get-bios-setting --json
+# https://github.com/fwupd/fwupd/blob/main/docs/bios-settings.md
+# dive ahaosv1/fwupd:latest-amd - поисследуй образ, может потребуется для запуска
+# Но вообще лучше сначала запустить на обычной ubuntu, там попробовать снять bios настройки, поменять их через bios и сравнить
 ---
 apiVersion: apps/v1
 kind: Deployment
