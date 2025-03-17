@@ -185,6 +185,7 @@ rmmod video
 ## Hardware
 TODO:
 * Server anaconda
+  * Блок питания: MONTECH GAMMA II 650 [GAMMA II 650]
   * Motherboard: Gigabyte Technology Co., Ltd. B560M DS3H
     * [Manual](https://download.gigabyte.com/FileList/Manual/mb_manual_b560m-ds3h-ac_e_v1.pdf)
     * BIOS:
@@ -233,6 +234,13 @@ TODO:
 * Network:
   * Mikrotik RBD52G-5HacD2HnD
 * Etc
+
+## Storage links
+* https://smarthdd.com/rus/database/ST4000VN006-3CW104/SC60/
+* https://smarthdd.com/rus/database/ST2000DM001-1CH164/
+* https://smarthdd.com/rus/database/WDC-WD10EACS-14ZJB0/01.01B01/
+* https://smarthdd.com/rus/database/WDC-WD10JPVX-22JC3T0/01.01A01/
+* https://smarthdd.com/rus/database/DGSR1256GS93T/W0704A0/
 
 ## Kubevirt
 * https://github.com/siderolabs/talos/pull/9522 - kubevirt
