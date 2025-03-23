@@ -1,15 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
 ---
-# Почему-то talhelper багует, не признает версии talosVersion
-# Как решение:
-# * обновить образ .devcontainer от onedr0p
-# * скачать talhelper и использовать локально (./talhelper)
-#   wget https://github.com/budimanjojo/talhelper/releases/download/v3.0.16/talhelper_linux_amd64.tar.gz
-#   tar -xvzf talhelper_linux_amd64.tar.gz talhelper
-# renovate: datasource=docker depName=ghcr.io/siderolabs/installer
-talosVersion: v1.9.2
-# renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-kubernetesVersion: v1.31.5
+talosVersion: "${talosVersion}"
+kubernetesVersion: "${kubernetesVersion}"
 
 clusterName: "home-kubernetes"
 endpoint: https://192.168.88.202:6443
@@ -33,18 +25,15 @@ nodes:
     ipAddress: "192.168.88.202"
     installDiskSelector:
       serial: "50026B76862410D9"
-    # talosctl ls /lib/modules/6.6.60-talos/extras
+    # talosctl ls /lib/modules/6.12.18-talos/extras
     kernelModules:
       - name: zfs
-      - name: it87
-        parameters:
-          - ignore_resource_conflict=1
-          - force_id=0x8628
-    # https://factory.talos.dev/?arch=amd64&cmdline-set=true&extensions=-&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fnut-client&extensions=siderolabs%2Fzfs&platform=metal&target=metal&version=1.9.0
-    # talosImageURL: factory.talos.dev/installer/074b51f558ed9001b5ef74368dde46a0ecbb90d3a834c461c79994bc2415c344
-    # К сожалению, task не поддерживает кастомные образы - дёргай вручную
-    # task talos:upgrade-node
-    talosImageURL: ghcr.io/mistikan/hl-cluster
+      # - name: it87
+      #   parameters:
+      #     - ignore_resource_conflict=1
+      #     - force_id=0x8628
+    # https://factory.talos.dev/?arch=amd64&cmdline-set=true&extensions=-&extensions=siderolabs%2Famdgpu&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fnut-client&extensions=siderolabs%2Fzfs&platform=metal&target=metal&version=1.9.5
+    talosImageURL: factory.talos.dev/installer/4a9eacd25b04e16c45c2fa8c3fdfc6c4007f20344faa2510c5e78dc61300e1a3
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -60,9 +49,10 @@ nodes:
       customization:
         systemExtensions:
           officialExtensions:
+            - siderolabs/amdgpu
             - siderolabs/i915
             - siderolabs/intel-ucode
-            - siderolabs/nut-client
+            # - siderolabs/nut-client # TODO: включить, когда буду подключать UPS
             - siderolabs/zfs
     extraManifests:
       - "./patches/anaconda/volumeconfig.yaml"
