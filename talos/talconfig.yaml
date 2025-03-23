@@ -32,8 +32,8 @@ nodes:
       #   parameters:
       #     - ignore_resource_conflict=1
       #     - force_id=0x8628
-    # https://factory.talos.dev/?arch=amd64&cmdline-set=true&extensions=-&extensions=siderolabs%2Famdgpu&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fnut-client&extensions=siderolabs%2Fzfs&platform=metal&target=metal&version=1.9.5
-    talosImageURL: factory.talos.dev/installer/4a9eacd25b04e16c45c2fa8c3fdfc6c4007f20344faa2510c5e78dc61300e1a3
+    # https://factory.talos.dev/?arch=amd64&cmdline-set=true&extensions=-&extensions=siderolabs%2Famdgpu&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fzfs&platform=metal&target=metal&version=1.9.5
+    talosImageURL: factory.talos.dev/installer/66f858dd8061486a2340a8b0f3519921198e2da3a7ab4f6f77e371c5ae823faf
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
