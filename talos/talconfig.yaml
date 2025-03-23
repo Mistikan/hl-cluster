@@ -65,7 +65,7 @@ nodes:
             - siderolabs/nut-client
             - siderolabs/zfs
     extraManifests:
-      - "/workspaces/hl-cluster/kubernetes/bootstrap/talos/patches/anaconda/volumeconfig.yaml"
+      - "./patches/anaconda/volumeconfig.yaml"
 
 # Global patches
 patches:
