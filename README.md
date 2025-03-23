@@ -166,6 +166,7 @@ TODO:
   * RAM:
     * KHX2666C16/8G
     * KHX2666C16/8G
+  * GPU: [Sapphire AMD Radeon RX 7600 PULSE GAMING OC 11324-01-20G](https://www.dns-shop.ru/product/a8002d751e3aed20/videokarta-sapphire-amd-radeon-rx-7600-pulse-gaming-oc-11324-01-20g/)
   * NVME:
     * KINGSTON SKC3000S512G - 512 GB
       * https://www.kingston.com/datasheets/KC3000_ru.pdf
