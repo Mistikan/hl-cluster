@@ -47,6 +47,9 @@ nodes:
         mtu: 1500
     schematic:
       customization:
+        extraKernelArgs:
+          # TODO: в идеале конечно не подавлять эти сообщения, но пока другого выхода нет
+          - pci=noaer
         systemExtensions:
           officialExtensions:
             - siderolabs/amdgpu

@@ -1,4 +1,8 @@
 cluster:
+  # https://github.com/siderolabs/talos/issues/9980
+  apiServer:
+    extraArgs:
+      feature-gates: AuthorizeNodeWithSelectors=false
   allowSchedulingOnControlPlanes: true
   controllerManager:
     extraArgs:
