@@ -22,6 +22,69 @@ spec:
       registry: quay.io
       repository: prometheus/node-exporter
 
+    extraArgs:
+      - --collector.textfile.directory=/run/prometheus_sidecar
+
+    extraVolumeMounts:
+      - name: power-metrics-volume
+        mountPath: /run/prometheus_sidecar
+        readOnly: true
+
+    sidecars:
+      - name: power-metrics
+        image: bash:5.2.37-alpine3.21
+        command: ["/usr/local/bin/bash"]
+        args: ["-c", "while true; do bash /usr/scripts/power_metrics.sh; sleep 60; done"]
+        volumeMounts:
+          - name: power-metrics-script
+            mountPath: /usr/scripts/
+          - name: power-metrics-volume
+            mountPath: /run/prometheus_sidecar
+
+    extraVolumes:
+      - name: power-metrics-script
+        configMap:
+          name: power-metrics-script
+      - name: power-metrics-volume
+        emptyDir: {}
+
+    extraManifests:
+      - |
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: power-metrics-script
+        data:
+          power_metrics.sh: |
+            #!/usr/local/bin/bash
+
+            # Путь к файлу с состояниями пакетов
+            CSTATE_FILE="/sys/kernel/debug/pmc_core/package_cstate_show"
+            PCIE_ASPM_FILE="/sys/module/pcie_aspm/parameters/policy"
+            OUTPUT_FILE="/run/prometheus_sidecar/cstate_metrics.prom"
+
+            # Проверяем, существует ли файл
+            if [[ ! -f "$CSTATE_FILE" ]]; then
+                echo "File $CSTATE_FILE does not exist."
+                echo "# TYPE package_cstate_scrape_last_error gauge" > "$OUTPUT_FILE"
+                echo "package_cstate_scrape_last_error 1" >> "$OUTPUT_FILE"
+                exit 1
+            fi
+
+            # Записываем метрики в файл
+            {
+                while IFS= read -r line; do
+                    if [[ $line =~ Package\ (C[0-9]+)\ :\ ([0-9]+) ]]; then
+                        state="${BASH_REMATCH[1]}"
+                        value="${BASH_REMATCH[2]}"
+                        echo "package_cstate{cstate=\"${state}\"} $value"
+                    fi
+                done < "$CSTATE_FILE"
+            } > "$OUTPUT_FILE"
+            echo "# TYPE package_cstate counter" >> "$OUTPUT_FILE"
+            echo "# TYPE package_cstate_scrape_last_error gauge" >> "$OUTPUT_FILE"
+            echo "package_cstate_scrape_last_error 0" >> "$OUTPUT_FILE"
+
     prometheus:
       monitor:
         enabled: true
