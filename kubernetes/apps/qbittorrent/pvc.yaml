@@ -1,0 +1,14 @@
+---
+# TODO: это должно быть через fluxcd, а не как сейчас
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: qbittorrent
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: openebs-zfs-kingston
