@@ -8,3 +8,13 @@ parameters:
   poolname: "storage"
 provisioner: zfs.csi.openebs.io
 allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-zfs-torrent-pool
+parameters:
+  fstype: "zfs"
+  poolname: "torrent_pool"
+provisioner: zfs.csi.openebs.io
+allowVolumeExpansion: true
