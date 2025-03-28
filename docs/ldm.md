@@ -1,4 +1,7 @@
 # Монтирование LDM раздела (WD Blue 1 TB)
+## Установка/подготовка
+* https://unix.stackexchange.com/questions/732611/cant-mount-ntfs-hard-disk-ldm-data-partition-correct-way-to-automatically-cre
+
 ## Поиск
 ```sh
 ls /dev/disk/by-uuid/ -lah | grep dm
