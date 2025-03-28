@@ -59,3 +59,4 @@ done
 * [qbt torrent add file](https://github.com/fedarovich/qbittorrent-cli/wiki/qbt-torrent-add-file)
 * [tor cache](https://torrends.to/sites/torrent-storage-caching/)
 * [qBittorrent-File-Matcher](https://github.com/xob0t/qBittorrent-File-Matcher)
+* [torrent2ipfs](https://github.com/riffcc/torrent2ipfs/)
