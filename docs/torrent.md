@@ -1,3 +1,6 @@
+# ВАЖНО
+**ВАЖНО**: в конце есть issue с поиском похожих файлов на диске.
+
 # О чём документ
 Как лучше поддерживать структуру в qbittorrent, основные идеи, что можно улучшить и скрипты.
 
@@ -60,3 +63,4 @@ done
 * [tor cache](https://torrends.to/sites/torrent-storage-caching/)
 * [qBittorrent-File-Matcher](https://github.com/xob0t/qBittorrent-File-Matcher)
 * [torrent2ipfs](https://github.com/riffcc/torrent2ipfs/)
+* [ПОИСК ПОХОЖИХ ФАЙЛОВ](https://github.com/qbittorrent/qBittorrent/issues/6520)
