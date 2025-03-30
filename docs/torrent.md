@@ -63,4 +63,5 @@ done
 * [tor cache](https://torrends.to/sites/torrent-storage-caching/)
 * [qBittorrent-File-Matcher](https://github.com/xob0t/qBittorrent-File-Matcher)
 * [torrent2ipfs](https://github.com/riffcc/torrent2ipfs/)
-* [ПОИСК ПОХОЖИХ ФАЙЛОВ](https://github.com/qbittorrent/qBittorrent/issues/6520)
+* [GITHUB: ПОИСК ПОХОЖИХ ФАЙЛОВ](https://github.com/qbittorrent/qBittorrent/issues/6520)
+* [Reddit: ПОИСК ПОХОЖИХ ФАЙЛОВ](https://www.reddit.com/r/qBittorrent/comments/1535dqp/python_script_to_match_torrents_to_files_on_your)
