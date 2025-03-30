@@ -13,6 +13,17 @@ zpool status new_name
 zpool export new_name
 ```
 
+## Миграция корневого пула в дочерний (неуспешно)
+* https://serverfault.com/questions/440632/zfs-rename-move-root-filesystem-into-child
+
+## Тестовый пул
+```sh
+truncate -s 128M /tmp/test_zpool
+zpool create test /tmp/test_zpool
+zpool list test
+zfs list test
+```
+
 # ZFS Торренты
 ## Введение
 На диске `/dev/sdX` создается zfs раздел для торрентов.
