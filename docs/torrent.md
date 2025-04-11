@@ -59,6 +59,14 @@ do
 done
 ```
 
+# Замена пути в базе данных torrents.db (скорее всего, всё равно потребует пересчёт хеша)
+```sql
+UPDATE torrents
+SET target_save_path = REPLACE(target_save_path, '/media/data/', '/media/zfs/wd_green_1tb_pool/data/');
+```
+
+Примечание: после подсовывания базы данных файлы не признал, надо было ДВА раза просить пересчитать хеш (первый раз не признает, второй раз начнёт пересчитывать).
+
 # Ссылки
 * [qbt torrent add file](https://github.com/fedarovich/qbittorrent-cli/wiki/qbt-torrent-add-file)
 * [tor cache](https://torrends.to/sites/torrent-storage-caching/)
