@@ -67,6 +67,9 @@ SET target_save_path = REPLACE(target_save_path, '/media/data/', '/media/zfs/wd_
 
 Примечание: после подсовывания базы данных файлы не признал, надо было ДВА раза просить пересчитать хеш (первый раз не признает, второй раз начнёт пересчитывать).
 
+# Смена директории на "хешовую" через web-interface
+См. `/home/user/projects/qbittorrent-managed-paths`.
+
 # Ссылки
 * [qbt torrent add file](https://github.com/fedarovich/qbittorrent-cli/wiki/qbt-torrent-add-file)
 * [tor cache](https://torrends.to/sites/torrent-storage-caching/)
