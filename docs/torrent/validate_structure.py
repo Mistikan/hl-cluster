@@ -11,7 +11,9 @@ TORRENT_DIRECTORIES = [
     # "/var/mnt/zfs/wd_green_1tb_pool/torrent",
     # "/var/mnt/zfs/wd_blue_1tb_pool/torrent"
     "/home/user/projects/github/Mistikan/hl-cluster/.venv/torrent"
-  ]
+    ]
+
+INFO_HASHS = []
 
 def validate_file(path: Path, length: int, torrent_files: dict, hash_data_dir: Path):
     path_str = str(path.relative_to(hash_data_dir))
@@ -42,6 +44,8 @@ def validate_file(path: Path, length: int, torrent_files: dict, hash_data_dir: P
     return True
 
 def validate_structure(torrent_dir):
+    global INFO_HASHS
+
     # Путь к директориям data и metadata
     data_dir = Path(torrent_dir, 'data')
     metadata_dir = Path(torrent_dir, 'metadata')
@@ -66,6 +70,10 @@ def validate_structure(torrent_dir):
         data_raw   = tp.parse_torrent_file(filepath, hash_raw=True)
         info_bytes = tp.encode(data_raw["info"])
         info_hash  = binascii.hexlify(hashlib.sha1(info_bytes).digest()).decode()
+        if info_hash in INFO_HASHS:
+            logging.error("Duplicate hashs!")
+            exit(1)
+        INFO_HASHS.append(info_hash)
         # Fields torrent
         data       = tp.parse_torrent_file(filepath)
         if "files" in data["info"]:
