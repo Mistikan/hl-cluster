@@ -41,6 +41,8 @@ def validate_file(path: Path, length: int, torrent_files: dict, hash_data_dir: P
         # TODO: надо предложить исправление, если запускать с отдельным ключом
         return False
 
+
+
     return True
 
 def validate_structure(torrent_dir):
@@ -61,7 +63,11 @@ def validate_structure(torrent_dir):
     # Получаем список файлов в директории metadata
     torrent_files = [f for f in metadata_dir.iterdir() if f.is_file()]
 
+    flag_stop = False
     for torrent_file in torrent_files:
+        if flag_stop:
+            exit(1)
+
         logging.info("-----")
         # Filepath
         filepath   = Path(torrent_file)
@@ -89,7 +95,7 @@ def validate_structure(torrent_dir):
         # Convert array to dict
         torrent_files = {}
         for file in torrent_files_tmp:
-            path   = file["path"][0]
+            path   = "/".join(file["path"])
             length = file["length"]
             torrent_files[path] = length
 
@@ -105,24 +111,33 @@ def validate_structure(torrent_dir):
         # Проверка наличия директории с данными
         if not os.path.isdir(hash_data_dir):
             logging.warning(f"Dir '{hash_data_dir}' not found.")
+            flag_stop = True
             continue
 
-        hash_data_files = [f for f in hash_data_dir.iterdir() if f.is_file()]
+        hash_data_files = [f for f in hash_data_dir.glob('**/*') if f.is_file()]
         r = {}
+
         for file in hash_data_files:
             # Получение параметров
             length = file.stat().st_size
             r [str(path)] = length
             # Проверка файла
-            validate_file(file, length, torrent_files, hash_data_dir)
+            res = validate_file(file, length, torrent_files, hash_data_dir)
+            if res == False:
+              flag_stop = True
+
         if len(hash_data_files) == 0:
             logging.error("Директория пуста!")
+            flag_stop = True
         hash_data_files = r
 
         # Недостающие файлы
         need_files = set(torrent_files) - set(hash_data_files)
         if len(need_files) != 0:
-            logging.warning (f"Need files: {need_files}")
+            logging.warning (f"Need files:")
+            for need_file in need_files:
+                print(f"{need_file}")
+            flag_stop = True
 
 
 def main():
