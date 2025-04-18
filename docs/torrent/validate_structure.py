@@ -5,9 +5,14 @@ from pathlib import Path
 import binascii
 import hashlib
 import logging
-
+import fcntl
+from array import array
 
 ST_MODE=0o666
+
+
+SET_IMMUTABLE_FILE_AUTO = False
+SET_CHMOD_FILE_AUTO = False
 
 TORRENT_DIRECTORIES = [
     # "/var/mnt/zfs/wd_green_1tb_pool/torrent",
@@ -16,6 +21,29 @@ TORRENT_DIRECTORIES = [
     ]
 
 INFO_HASHS = []
+
+# https://www.geeklab.info/2021/04/chattr-and-lsattr-in-python/#respond
+# FS constants - see /uapi/linux/fs.h in kernel source
+# or <elixir.free-electrons.com/linux/latest/source/include/uapi/linux/fs.h>
+FS_IOC_GETFLAGS = 0x80086601
+FS_IOC_SETFLAGS = 0x40086602
+FS_IMMUTABLE_FL = 0x010
+
+def chattri(filename: str, value: bool):
+    with open(filename,'r') as f:
+        arg = array('L', [0])
+        fcntl.ioctl(f.fileno(), FS_IOC_GETFLAGS, arg, True)
+        if value:
+            arg[0]=arg[0] | FS_IMMUTABLE_FL
+        else:
+            arg[0]=arg[0] &~ FS_IMMUTABLE_FL
+        fcntl.ioctl(f.fileno(), FS_IOC_SETFLAGS, arg, True)
+
+def lsattri(filename: str) -> bool:
+    with open(filename,'r') as f:
+        arg = array('L', [0])
+        fcntl.ioctl(f.fileno(), FS_IOC_GETFLAGS, arg, True)
+    return bool(arg[0] & FS_IMMUTABLE_FL)
 
 def validate_file(path: Path, length: int, torrent_files: dict, hash_data_dir: Path):
     path_str = str(path.relative_to(hash_data_dir))
@@ -37,12 +65,21 @@ def validate_file(path: Path, length: int, torrent_files: dict, hash_data_dir: P
 
     # Проверка прав доступа
     # TODO: ещё владельца проверять, что root и группа root
-    # TODO: а ещё навесить chattr immutable
     file_stat = os.stat(path)
     if file_stat.st_mode & stat.S_IMODE(file_stat.st_mode) != ST_MODE:
         logging.warning(f"Права доступа к файлу '{path}' не соответствуют {ST_MODE}.")
-        logging.warning(f"Исправляем в автоматическом режиме")
-        os.chmod(path, ST_MODE)
+        if SET_CHMOD_FILE_AUTO:
+          logging.warning(f"Исправляем в автоматическом режиме")
+          os.chmod(path, ST_MODE)
+
+    immutable_file = lsattri(path)
+    if immutable_file:
+        logging.info("File immutable. Path: {path}")
+    else:
+        logging.warning(f"File is not immutable. Path: {path}")
+        if SET_IMMUTABLE_FILE_AUTO:
+            logging.warning(f"Исправляем в автоматическом режиме")
+            chattri(path, True)
 
     return True
 
@@ -118,6 +155,15 @@ def validate_structure(torrent_dir):
         if filename != filepath.name:
             logging.warning(f"Rename file {filepath} => {filename}")
             continue
+
+        immutable_file = lsattri(filepath)
+        if immutable_file:
+            logging.info("Torrent file immutable. Path: {filepath}")
+        else:
+            logging.warning(f"Torrent file is not immutable. Path: {filepath}")
+            if SET_IMMUTABLE_FILE_AUTO:
+                logging.warning(f"Исправляем в автоматическом режиме")
+                chattri(path, True)
 
         # Путь к директории с данными для данного хеша
         hash_data_dir = Path(data_dir, info_hash)
