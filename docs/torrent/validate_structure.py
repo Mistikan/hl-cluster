@@ -93,12 +93,25 @@ def validate_structure(torrent_dir):
                 }
             ]
 
+        # Ignore_files
+        ignore_files_path = Path(metadata_dir / ".ignore_files" / (info_hash + ".txt"))
+        if ignore_files_path.is_file():
+          logging.info(f"Read ignore file {ignore_files_path}")
+          with open(ignore_files_path) as my_file:
+            ignore_files = my_file.read().splitlines()
+        else:
+          ignore_files = []
+
         # Convert array to dict
         torrent_files = {}
         for file in torrent_files_tmp:
             path   = "/".join(file["path"])
             length = file["length"]
             torrent_files[path] = length
+
+        # Убираю игнорируемые файлы
+        for ignore_file in ignore_files:
+          torrent_files.pop(ignore_file)
 
         # Проверка названия торрент файла на наличие хеша
         filename = info_hash + ".torrent"
@@ -130,6 +143,8 @@ def validate_structure(torrent_dir):
                 torrent_files.pop(file_str)
             else:
                 flag_stop = True
+
+
 
         # Недостающие файлы
         if len(torrent_files) > 0:
