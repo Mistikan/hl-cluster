@@ -7,6 +7,8 @@ import hashlib
 import logging
 
 
+ST_MODE=0o666
+
 TORRENT_DIRECTORIES = [
     # "/var/mnt/zfs/wd_green_1tb_pool/torrent",
     # "/var/mnt/zfs/wd_blue_1tb_pool/torrent"
@@ -35,13 +37,12 @@ def validate_file(path: Path, length: int, torrent_files: dict, hash_data_dir: P
 
     # Проверка прав доступа
     # TODO: ещё владельца проверять, что root и группа root
+    # TODO: а ещё навесить chattr immutable
     file_stat = os.stat(path)
-    if file_stat.st_mode & stat.S_IMODE(file_stat.st_mode) != 0o664:
-        logging.warning(f"Права доступа к файлу '{path}' не соответствуют 664.")
-        # TODO: надо предложить исправление, если запускать с отдельным ключом
-        return False
-
-
+    if file_stat.st_mode & stat.S_IMODE(file_stat.st_mode) != ST_MODE:
+        logging.warning(f"Права доступа к файлу '{path}' не соответствуют {ST_MODE}.")
+        logging.warning(f"Исправляем в автоматическом режиме")
+        os.chmod(path, ST_MODE)
 
     return True
 
@@ -123,19 +124,17 @@ def validate_structure(torrent_dir):
             r [str(path)] = length
             # Проверка файла
             res = validate_file(file, length, torrent_files, hash_data_dir)
-            if res == False:
-              flag_stop = True
-
-        if len(hash_data_files) == 0:
-            logging.error("Директория пуста!")
-            flag_stop = True
-        hash_data_files = r
+            # Если файл нашли, то удаляем его из файлов для торрента
+            if res:
+                file_str = str(file.relative_to(hash_data_dir))
+                torrent_files.pop(file_str)
+            else:
+                flag_stop = True
 
         # Недостающие файлы
-        need_files = set(torrent_files) - set(hash_data_files)
-        if len(need_files) != 0:
+        if len(torrent_files) > 0:
             logging.warning (f"Need files:")
-            for need_file in need_files:
+            for need_file in torrent_files:
                 print(f"{need_file}")
             flag_stop = True
 
