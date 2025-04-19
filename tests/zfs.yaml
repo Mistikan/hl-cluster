@@ -1,9 +1,11 @@
 # apt-get update
 # DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y zfsutils-linux kmod
 # zpool list
+# zpool status
 # zfs list
 # zfs set mountpoint=/var/mnt/zfs/torrent_pool torrent_pool
 # zfs set mountpoint=/var/mnt/zfs/pool_data    pool_data
+# zfs set mountpoint=/var/mnt/zfs/wd_blue_1tb_pool/torrent wd_blue_1tb_pool/torrent
 
 # fwupd for bios
 # apt-get install fwupd
