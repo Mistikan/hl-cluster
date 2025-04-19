@@ -7,12 +7,25 @@ import hashlib
 import logging
 import fcntl
 from array import array
+import pwd
+import grp
+import os
 
-ST_MODE=0o666
 
+# TODO: поставить 0o664
+ST_MODE_FILE=0o666
+# TODO: поставить 0o775
+ST_MODE_DIRECTORY=0o777
+
+FILE_OWNER_USER="root"
+FILE_OWNER_GROUP="root"
+
+DIR_OWNER_USER="root"
+DIR_OWNER_GROUP="root"
 
 SET_IMMUTABLE_FILE_AUTO = False
 SET_CHMOD_FILE_AUTO = False
+SET_CHOWN_FILE_AUTO = False
 
 TORRENT_DIRECTORIES = [
     # "/var/mnt/zfs/wd_green_1tb_pool/torrent",
@@ -66,11 +79,17 @@ def validate_file(path: Path, length: int, torrent_files: dict, hash_data_dir: P
     # Проверка прав доступа
     # TODO: ещё владельца проверять, что root и группа root
     file_stat = os.stat(path)
-    if file_stat.st_mode & stat.S_IMODE(file_stat.st_mode) != ST_MODE:
-        logging.warning(f"Права доступа к файлу '{path}' не соответствуют {ST_MODE}.")
+    if file_stat.st_mode & stat.S_IMODE(file_stat.st_mode) != ST_MODE_FILE:
+        logging.warning(f"Права доступа к файлу '{path}' не соответствуют {ST_MODE_FILE}.")
         if SET_CHMOD_FILE_AUTO:
           logging.warning(f"Исправляем в автоматическом режиме")
-          os.chmod(path, ST_MODE)
+          os.chmod(path, ST_MODE_FILE)
+
+        if SET_CHOWN_FILE_AUTO:
+          uid = pwd.getpwnam(FILE_OWNER_USER).pw_uid
+          gid = grp.getgrnam(FILE_OWNER_GROUP).gr_gid
+          os.chown(path, uid, gid)
+
 
     immutable_file = lsattri(path)
     if immutable_file:
@@ -190,8 +209,6 @@ def validate_structure(torrent_dir):
             else:
                 flag_stop = True
 
-
-
         # Недостающие файлы
         if len(torrent_files) > 0:
             logging.warning (f"Need files:")
@@ -199,6 +216,18 @@ def validate_structure(torrent_dir):
                 print(f"{need_file}")
             flag_stop = True
 
+        hash_data_dir = [f for f in hash_data_dir.glob('**/*') if f.is_dir()]
+        for dir in hash_data_dir:
+          # Chmod
+          if SET_CHMOD_FILE_AUTO:
+            logging.warning(f"Исправляем в автоматическом режиме")
+            os.chmod(dir, ST_MODE_DIRECTORY)
+
+          # Chown
+          if SET_CHOWN_FILE_AUTO:
+            uid = pwd.getpwnam(DIR_OWNER_USER).pw_uid
+            gid = grp.getgrnam(DIR_OWNER_GROUP).gr_gid
+            os.chown(dir, uid, gid)
 
 def main():
     logging.basicConfig(level=logging.INFO)
