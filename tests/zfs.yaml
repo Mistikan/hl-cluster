@@ -3,9 +3,9 @@
 # zpool list
 # zpool status
 # zfs list
-# zfs set mountpoint=/var/mnt/zfs/torrent_pool torrent_pool
-# zfs set mountpoint=/var/mnt/zfs/pool_data    pool_data
+# zfs set mountpoint=/var/mnt/zfs/pool_data                pool_data
 # zfs set mountpoint=/var/mnt/zfs/wd_blue_1tb_pool/torrent wd_blue_1tb_pool/torrent
+# zfs set mountpoint=/var/mnt/zfs/wd_green_1tb_pool        wd_green_1tb_pool
 
 # fwupd for bios
 # apt-get install fwupd
@@ -45,15 +45,15 @@ spec:
           - name: dev
             # mountPropagation: "Bidirectional"
             mountPath: "/dev"
-          - name: wg-green-1tb-data-torrent
-            mountPath: "/torrent"
-            readOnly: true
+          # - name: var-mnt-zfs
+          #   mountPath: /var/mnt/zfs
+          #   # readOnly: true
       volumes:
         - name: dev
           hostPath:
             path: /dev
             type: Directory
-        - name: wg-green-1tb-data-torrent
-          hostPath:
-            path: /var/mount-part #/wd_green_1tb/data/torrent
-            type: Directory
+        # - name: var-mnt-zfs
+        #   hostPath:
+        #     path: /var/mnt/zfs
+        #     type: Directory
