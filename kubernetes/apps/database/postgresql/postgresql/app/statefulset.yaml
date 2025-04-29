@@ -29,7 +29,7 @@ spec:
               memory: 400Mi
               cpu: 200m
             limits:
-              memory: 512Mi
+              memory: 1024Mi
               cpu: 200m
           envFrom:
             - secretRef:
