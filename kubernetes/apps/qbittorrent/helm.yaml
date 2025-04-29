@@ -116,5 +116,12 @@ spec:
           - path: /media/zfs/wd_blue_1tb_pool
             # TODO: раскомментировать, когда скачаю всё и диск будет только для раздачи
             # readOnly: true
+      media-seagate-barracuda:
+        type: hostPath
+        hostPath: /var/mnt/zfs/seagate_barracuda_2tb_pool/torrent
+        globalMounts:
+          - path: /media/zfs/seagate_barracuda_2tb_pool
+            # TODO: раскомментировать, когда скачаю всё и диск будет только для раздачи
+            # readOnly: true
       tmp:
         type: emptyDir

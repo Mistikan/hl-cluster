@@ -3,9 +3,10 @@
 # zpool list
 # zpool status
 # zfs list
-# zfs set mountpoint=/var/mnt/zfs/pool_data                pool_data
-# zfs set mountpoint=/var/mnt/zfs/wd_blue_1tb_pool/torrent wd_blue_1tb_pool/torrent
-# zfs set mountpoint=/var/mnt/zfs/wd_green_1tb_pool        wd_green_1tb_pool
+# zfs set mountpoint=/var/mnt/zfs/pool_data                          pool_data
+# zfs set mountpoint=/var/mnt/zfs/wd_blue_1tb_pool/torrent           wd_blue_1tb_pool/torrent
+# zfs set mountpoint=/var/mnt/zfs/wd_green_1tb_pool                  wd_green_1tb_pool
+# zfs set mountpoint=/var/mnt/zfs/seagate_barracuda_2tb_pool/torrent seagate_barracuda_2tb_pool/torrent
 
 # fwupd for bios
 # apt-get install fwupd
