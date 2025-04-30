@@ -45,6 +45,7 @@ spec:
                 POSTGRES_PASSWORD: bitmagnet
                 POSTGRES_HOST: postgres-svc.postgresql
                 TMDB_ENABLED: "false"
+                DHT_CRAWLER_SAVE_FILES_THRESHOLD: "500000"
     configmap:
       dashboard:
         enabled: false
