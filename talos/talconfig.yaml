@@ -28,6 +28,7 @@ nodes:
     # talosctl ls /lib/modules/6.12.18-talos/extras
     kernelModules:
       - name: zfs
+      - name: intel_pmc_core
       # - name: it87
       #   parameters:
       #     - ignore_resource_conflict=1
