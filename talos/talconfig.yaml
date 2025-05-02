@@ -28,6 +28,8 @@ nodes:
     # talosctl ls /lib/modules/6.12.18-talos/extras
     kernelModules:
       - name: zfs
+      # Внутри рутового контейнера mount -t debugfs none /sys/kernel/debug
+      # И доступ к /sys/kernel/debug/pmc_core/ появится
       - name: intel_pmc_core
       # - name: it87
       #   parameters:
