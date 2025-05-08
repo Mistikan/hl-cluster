@@ -40,6 +40,11 @@ spec:
             mountPath: /usr/scripts/
           - name: power-metrics-volume
             mountPath: /run/prometheus_sidecar
+        securityContext:
+          capabilities:
+            # For mount -t debugfs none /sys/kernel/debug
+            add:
+            - SYS_ADMIN
 
     extraVolumes:
       - name: power-metrics-script
