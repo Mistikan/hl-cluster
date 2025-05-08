@@ -34,17 +34,18 @@ spec:
       - name: power-metrics
         image: bash:5.2.37-alpine3.21
         command: ["/usr/local/bin/bash"]
-        args: ["-c", "while true; do bash /usr/scripts/power_metrics.sh; sleep 60; done"]
+        args: ["-c", "while true; do bash /usr/scripts/power_metrics.sh; sleep 10; done"]
         volumeMounts:
           - name: power-metrics-script
             mountPath: /usr/scripts/
           - name: power-metrics-volume
             mountPath: /run/prometheus_sidecar
+        # For mount -t debugfs none /sys/kernel/debug
         securityContext:
+          runAsUser: 0
           capabilities:
-            # For mount -t debugfs none /sys/kernel/debug
-            add:
-            - SYS_ADMIN
+            add: ["SYS_ADMIN"]
+          runAsNonRoot: false
 
     extraVolumes:
       - name: power-metrics-script
@@ -68,6 +69,14 @@ spec:
             PCIE_ASPM_FILE="/sys/module/pcie_aspm/parameters/policy"
             OUTPUT_FILE="/run/prometheus_sidecar/cstate_metrics.prom"
 
+            # Подмонтировано ли
+            if mountpoint -q /sys/kernel/debug
+            then
+              :
+            else
+              mount -t debugfs none /sys/kernel/debug
+            fi
+
             # Проверяем, существует ли файл
             if [[ ! -f "$CSTATE_FILE" ]]; then
                 echo "File $CSTATE_FILE does not exist."
@@ -77,6 +86,7 @@ spec:
             fi
 
             # Записываем метрики в файл
+            echo "# TYPE package_cstate counter" > "$OUTPUT_FILE"
             {
                 while IFS= read -r line; do
                     if [[ $line =~ Package\ (C[0-9]+)\ :\ ([0-9]+) ]]; then
@@ -85,8 +95,7 @@ spec:
                         echo "package_cstate{cstate=\"${state}\"} $value"
                     fi
                 done < "$CSTATE_FILE"
-            } > "$OUTPUT_FILE"
-            echo "# TYPE package_cstate counter" >> "$OUTPUT_FILE"
+            } >> "$OUTPUT_FILE"
             echo "# TYPE package_cstate_scrape_last_error gauge" >> "$OUTPUT_FILE"
             echo "package_cstate_scrape_last_error 0" >> "$OUTPUT_FILE"
 
