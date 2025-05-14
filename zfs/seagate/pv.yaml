@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: seagate-barracuda-2tb-pool-torrent-pv # some unique name
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 200Gi # size of the volume
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: seagate-barracuda-2tb-pool-torrent-pvc # name of pvc which can claim this PV
+    namespace: default # namespace for the pvc
+  csi:
+    driver: zfs.csi.openebs.io
+    fsType: zfs
+    volumeAttributes:
+      openebs.io/poolname: seagate_barracuda_2tb_pool # change the pool name accordingly
+    volumeHandle: torrent # This should be same as the zfs volume name
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - anaconda # change the hostname where volume is present
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: openebs-seagate-barracuda-2tb-pool
+  volumeMode: Filesystem

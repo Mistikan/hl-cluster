@@ -1,0 +1,18 @@
+---
+apiVersion: zfs.openebs.io/v1
+kind: ZFSVolume
+metadata:
+  finalizers:
+  - zfs.openebs.io/finalizer
+  labels:
+    kubernetes.io/nodename: anaconda
+  name: torrent
+  namespace: openebs-system
+spec:
+  capacity: "214748364800" # size of the volume in bytes
+  fsType: zfs
+  ownerNodeID: anaconda # should be the nodename where ZPOOL is running
+  poolName: seagate_barracuda_2tb_pool # poolname where the volume is present
+  volumeType: DATASET # whether it is a DATASET or ZVOL
+status:
+  state: Ready # state should be Ready as volume is already present

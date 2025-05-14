@@ -1,0 +1,13 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: wd-blue-1tb-pool-torrent-pvc
+  namespace: default
+spec:
+  storageClassName: openebs-wd-blue-1tb-pool
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 947Gi

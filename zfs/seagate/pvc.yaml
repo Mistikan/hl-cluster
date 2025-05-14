@@ -1,0 +1,13 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: seagate-barracuda-2tb-pool-torrent-pvc
+  namespace: default
+spec:
+  storageClassName: openebs-seagate-barracuda-2tb-pool
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200Gi

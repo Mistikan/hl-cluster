@@ -1,0 +1,10 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-seagate-barracuda-2tb-pool
+allowVolumeExpansion: true
+parameters:
+  poolname: "seagate_barracuda_2tb_pool"
+  fstype: "zfs"
+provisioner: zfs.csi.openebs.io
