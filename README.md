@@ -163,6 +163,8 @@ TODO:
         talosctl ls /sys/devices/platform/it87.2624
         ```
   * CPU: 11th Gen Intel(R) Core(TM) i5-11400 @ 2.60GHz
+  * FAN CPU: [ID-COOLING SE-914-XT BASIC V2](https://www.dns-shop.ru/product/460217bcabebed20/kuler-dla-processora-id-cooling-se-914-xt-basic-v2/)
+    * Высота: 126 мм
   * RAM:
     * KHX2666C16/8G
     * KHX2666C16/8G
