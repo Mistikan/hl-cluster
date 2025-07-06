@@ -33,3 +33,6 @@ Group 15:	[10ec:8168] [R] 06:00.0  Ethernet controller                      RTL8
 # Ссылки
 * [List IOMMU Groups and the connected USB Devices ](https://gist.github.com/r15ch13/ba2d738985fce8990a4e9f32d07c6ada)
 * [Мой идеальный компьютер](https://habr.com/ru/articles/921160/)
+* [The state of AMD RX 7000 Series VFIO Passthrough (April 2024)](https://forum.level1techs.com/t/the-state-of-amd-rx-7000-series-vfio-passthrough-april-2024/210242)
+* [Серия «Как использовать VFIO GPU», часть 4 — Наша первая виртуальная машина](https://vfio.blogspot.com/2015/05/vfio-gpu-how-to-series-part-4-our-first.html)
+
