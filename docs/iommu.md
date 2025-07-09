@@ -30,6 +30,38 @@ Group 14:	[2646:5025] [R] 04:00.0  Non-Volatile memory controller           Devi
 Group 15:	[10ec:8168] [R] 06:00.0  Ethernet controller                      RTL8111/8168/8211/8411 PCI Express Gigabit Ethernet Controller
 ```
 
+# Настройки
+## Создание пустого rom bar
+Требуется создать rom bar по пути `/usr/share/vgabios/dummy.rom`.
+
+Команда для создания:
+```sh
+dd if=/dev/zero of=dummy.rom bs=1M count=1
+```
+
+Права:
+```sh
+root@anaconda:~# ls -lah /usr/share | grep vga
+drwxr-xr-x    2 root root 4,0K июл  7 11:52 vgabios
+
+root@anaconda:~# ls -lah /usr/share/vgabios/
+итого 1,1M
+drwxr-xr-x   2 root         root 4,0K июл  7 11:52 .
+drwxr-xr-x 263 root         root  12K июл  7 11:52 ..
+-rw-rw-rw-   1 libvirt-qemu kvm  1,0M июл  7 07:50 dummy.rom
+```
+
+## Указание rom bar
+См. [configure VM](https://github.com/ledisthebest/LEDs-single-gpu-passthrough/blob/main/VFIO/Setting%20up%20Passthrough.md).
+
+Пример настроенных устройств:
+* ![0](./img/iommu/pci_0.jpg)
+* ![1](./img/iommu/pci_1.jpg)
+* ![2](./img/iommu/pci_2.jpg)
+
+## Указание настроек kvm
+См. [Bypass Nvidia VM detection(not required anymore as of April 2021?) Edit XML:](https://github.com/ledisthebest/LEDs-single-gpu-passthrough/blob/main/VFIO/Setting%20up%20Passthrough.md).
+
 # Ссылки
 * [List IOMMU Groups and the connected USB Devices ](https://gist.github.com/r15ch13/ba2d738985fce8990a4e9f32d07c6ada)
 * [Мой идеальный компьютер](https://habr.com/ru/articles/921160/)
