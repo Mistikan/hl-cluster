@@ -43,11 +43,25 @@
 Можно собрать модель, капнуть в места разлома и засветить модель - идеального результата конечно не будет, но пойдёт.
 
 # Модели
+## Материнка
+* [Modular ITX/DTX/mATX/ATX/EATX/SSI-EEB/SSI-CEB/XL-ATX mainboard frame/tray](https://www.thingiverse.com/thing:4355821)
+    * более приоритетный вариант, т.к. только одна часть печатается с поддержками
+    * не забудь включить поддерджки. :)
 * [Micro ATX rack and measurements](https://www.thingiverse.com/thing:5155837)
-  * также потребуются "Резьбовые втулки для пластика и других материалов"
+* также потребуются "Резьбовые втулки для пластика и других материалов"
+
+## Backplate
+* я замоделировал свою - смотри [README.md](docs/case/shield/README.md)
 * [PC Universal Backplate IOShield](https://www.thingiverse.com/thing:3609985)
   * в документации к материнской плате есть схема разъёмов. Если её выдавить, то должно получиться идеально.
+
+## HDD
 * [HDD Cage - stackable](https://www.thingiverse.com/thing:3601916)
+
+## PSU
+* [Mendel90 PSU brackets for Micro ATX (4 x 2.5 x 5 ")](https://www.thingiverse.com/thing:1243408) - не проверял, но по бумагам как будто может мне подойти.
+
+## Корпус
 * [Level 20 VT by Thermaltake](https://www.thingiverse.com/thing:3549797)
 
 # Гайды
