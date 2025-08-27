@@ -145,6 +145,7 @@ TODO:
   * Блок питания: MONTECH GAMMA II 650 [GAMMA II 650]
   * Motherboard: Gigabyte Technology Co., Ltd. B560M DS3H
     * [Manual](https://download.gigabyte.com/FileList/Manual/mb_manual_b560m-ds3h-ac_e_v1.pdf)
+    * Micro ATX Form Factor; 24.4cm x 24.4cm
     * BIOS:
       * Version: F11
       * Date: 12/19/2023
