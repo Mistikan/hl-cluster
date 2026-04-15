@@ -335,6 +335,11 @@ flux get all
 talosctl reboot -m powercycle
 ```
 
+### Poweroff node
+```sh
+talosctl shutdown
+```
+
 ### Services
 ```sh
 talosctl services
