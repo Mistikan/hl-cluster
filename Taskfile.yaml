@@ -1,5 +1,4 @@
 ---
-# yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: '3'
 
 set: [pipefail]
@@ -16,6 +15,7 @@ vars:
 env:
   KUBECONFIG: '{{.ROOT_DIR}}/kubeconfig'
   SOPS_AGE_KEY_FILE: '{{.ROOT_DIR}}/age.key'
+  SOPS_CONFIG: '{{.ROOT_DIR}}/.sops.yaml'
   TALOSCONFIG: '{{.TALOSCONFIG}}'
 
 includes:
