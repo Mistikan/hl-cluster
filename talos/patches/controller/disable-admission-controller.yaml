@@ -1,2 +1,11 @@
-- op: remove
-  path: /cluster/apiServer/admissionControl
+# https://github.com/siderolabs/talos/issues/12613
+# Старый вариант: не работает
+# - op: remove
+#   path: /cluster/apiServer/admissionControl
+
+# Новый вариант
+# https://github.com/onedr0p/cluster-template/blob/main/templates/config/talos/patches/controller/cluster.yaml.j2
+cluster:
+  apiServer:
+     admissionControl:
+       $$patch: delete
