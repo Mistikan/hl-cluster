@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "naiveproxy"
+  namespace: "ntc"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: naive
+  template:
+    metadata:
+      labels:
+        app: naive
+    spec:
+      containers:
+      - name: naive
+        image: pocat/naiveproxy:v147.0.7727.49-1@sha256:e9140ca7a39aaf70203b7358c7207b9f758170fe460a3f4904041c6816c449c7
+        ports:
+          - containerPort: 1080
+          - containerPort: 8080
+        readinessProbe:
+          tcpSocket:
+            port: 1080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 1080
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        volumeMounts:
+          - name: "naive"
+            mountPath: "/etc/naiveproxy"
+            readOnly: true
+      volumes:
+        - name: "naive"
+          secret:
+            secretName: "naive"
