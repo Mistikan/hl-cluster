@@ -295,6 +295,7 @@ EDITOR=nano sops /workspaces/hl-cluster/kubernetes/flux/vars/cluster-secrets.sop
 ## Flux
 ### Обновить состояние git
 ```sh
+flux reconcile source git flux-system
 flux reconcile source git home-kubernetes
 ```
 
