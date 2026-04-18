@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "telemt"
+  namespace: "ntc"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telemt
+  template:
+    metadata:
+      labels:
+        app: telemt
+    spec:
+      containers:
+      - name: telemt
+        image: ghcr.io/telemt/telemt:3.4.3@sha256:26df2f7eb0c10316e8bb5172fa551a073d2c9f38f5fbad278d085ef1577bddd3
+        command: ["/app/telemt"]
+        args: ["/etc/telemt/config.toml"]
+        ports:
+          - containerPort: 443
+          - containerPort: 9090
+          - containerPort: 9091
+        envFrom:
+          - configMapRef:
+              name: "telemt-env"
+        livenessProbe:
+          exec:
+            command:
+            - "/app/telemt"
+            - "healthcheck"
+            - "/etc/telemt/config.toml"
+            - "--mode"
+            - "liveness"
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 1
+          failureThreshold: 3
+        volumeMounts:
+          - name: "telemt"
+            mountPath: "/etc/telemt"
+            readOnly: true
+      volumes:
+        - name: "telemt"
+          secret:
+            secretName: "telemt"
