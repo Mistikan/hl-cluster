@@ -22,7 +22,7 @@ spec:
       sync:
         kind: GitRepository
         url: "https://github.com/Mistikan/hl-cluster.git"
-        ref: "refs/heads/master"
+        ref: "refs/heads/main"
         path: kubernetes/flux/cluster
       commonMetadata:
         labels:
