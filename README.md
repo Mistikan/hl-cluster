@@ -329,7 +329,7 @@ flux get sources helm -A
 
 ### Получить всё
 ```sh
-flux get all
+flux get all -A
 ```
 
 ## Talos
