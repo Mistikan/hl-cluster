@@ -19,9 +19,12 @@ spec:
         command: ["/app/telemt"]
         args: ["/etc/telemt/config.toml"]
         ports:
-          - containerPort: 443
-          - containerPort: 9090
-          - containerPort: 9091
+          - name: https
+            containerPort: 443
+          - name: metrics
+            containerPort: 9090
+          - name: api
+            containerPort: 9091
         envFrom:
           - configMapRef:
               name: "telemt-env"
