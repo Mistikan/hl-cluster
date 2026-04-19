@@ -19,5 +19,3 @@ talosconfig
 .venv/
 .DS_Store
 Thumbs.db
-sorted/ntc/naive/secret.yaml
-sorted/ntc/telemt/secret.yaml
