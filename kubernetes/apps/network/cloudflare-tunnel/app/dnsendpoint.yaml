@@ -4,8 +4,7 @@ kind: DNSEndpoint
 metadata:
   name: cloudflare-tunnel
 spec:
-  # TODO: укажи данные
   endpoints:
     - dnsName: "external.${SECRET_DOMAIN}"
       recordType: CNAME
-      targets: ["#{ cloudflare_tunnel_id() }#.cfargotunnel.com"]
+      targets: ["13d7dc68-297a-4822-83a3-29db2c5faa9e.cfargotunnel.com"]
