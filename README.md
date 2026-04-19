@@ -1,5 +1,8 @@
 # hl-cluster (homelab-cluster)
 ## TODO
+* установить bitmagnet для сборки статистики
+* подружить с cloudflare
+* настроить ingress - его новую реализацию envoy
 * установка ingress-nginx. Как это делается:
   * ставится https://github.com/onedr0p/home-ops/tree/main/kubernetes/main/apps/network/nginx/internal в первозданном виде:
     * нужно сразу IP, который будет обслуживать внутренние запросы отделать от кубера. Будет что-то на уровне плавающего IP
