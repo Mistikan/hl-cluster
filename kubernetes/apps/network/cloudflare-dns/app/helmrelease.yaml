@@ -10,7 +10,10 @@ spec:
   interval: 1h
   values:
     fullnameOverride: *app
-    provider: cloudflare
+    provider:
+      name: cloudflare
+    logFormat: json
+    logLevel: debug
     env:
       - name: CF_API_TOKEN
         valueFrom:
@@ -18,8 +21,6 @@ spec:
             name: &secret cloudflare-dns-secret
             key: api-token
     extraArgs:
-      - --log-level=debug
-      - --log-format=json
       - --cloudflare-dns-records-per-page=1000
       - --cloudflare-proxied
       - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
