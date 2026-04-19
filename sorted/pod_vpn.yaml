@@ -1,0 +1,32 @@
+# Примечание: curl запросы по http/https проходят споконо на ip
+# Проблемы:
+# * не работает dns
+# * не работает трафик, отличный от http/https (icmp, udp, etc)
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: samplepod
+  namespace: kube-system
+  annotations:
+    k8s.v1.cni.cncf.io/networks: '[
+            { "name": "vpn",
+              "ips": [ "192.168.88.50/24" ],
+              "mac": "c2:b0:57:49:47:f1",
+              "gateway": [ "192.168.88.1" ]
+            }]'
+spec:
+  containers:
+  - name: samplepod
+    command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
+    image: dougbtv/centos-network
+    ports:
+      - containerPort: 80
+  - name: tun2proxy
+    image: ghcr.io/tun2proxy/tun2proxy-ubuntu:v0.7.20
+    args: ["--proxy", "socks5://naive.ntc:1080"]
+    securityContext:
+      capabilities:
+        add:
+          - NET_ADMIN
+      privileged: true
