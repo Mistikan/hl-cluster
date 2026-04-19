@@ -332,6 +332,13 @@ flux get sources helm -A
 flux get all -A
 ```
 
+## Gateway
+```sh
+kubectl get gatewayclasses.gateway.networking.k8s.io
+kubectl get gateway -A
+kubectl get HTTPRoute -A
+```
+
 ## Talos
 ### Reboot node
 ```sh
