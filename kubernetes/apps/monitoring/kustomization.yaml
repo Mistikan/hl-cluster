@@ -6,7 +6,4 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./kube-prometheus-stack/ks.yaml
-  - ./grafana/ks.yaml
   - ./tuya-web/ks.yaml
-  - ./node-exporter/ks.yaml
