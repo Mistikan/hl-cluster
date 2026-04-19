@@ -6,13 +6,13 @@ metadata:
   name: &appname tuya-web
   namespace: flux-system
 spec:
-  targetNamespace: monitoring
+  targetNamespace: observability
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
   interval: 30m
   timeout: 5m
-  path: "./kubernetes/apps/monitoring/tuya-web/app"
+  path: "./kubernetes/apps/observability/tuya-web/app"
   prune: true
   sourceRef:
     kind: GitRepository
