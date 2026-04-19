@@ -316,12 +316,12 @@ flux get helmreleases -A
 
 ### Получить sources git
 ```sh
-flux get sources git
+flux get sources git -A
 ```
 
 ### Получить sources helm
 ```sh
-flux get sources helm
+flux get sources helm -A
 ```
 
 ### Получить всё
