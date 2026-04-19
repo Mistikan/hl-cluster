@@ -4,7 +4,8 @@ kind: Deployment
 metadata:
   name: tuya-web
 spec:
-  replicas: 1
+  # TODO: enable
+  replicas: 0
   selector:
     matchLabels:
       app: tuya-web
