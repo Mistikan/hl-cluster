@@ -1,0 +1,12 @@
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: examplearecord
+spec:
+  endpoints:
+    - dnsName: echo.${SECRET_DOMAIN}
+      recordTTL: 60
+      recordType: A
+      targets:
+        - 10.0.0.1
