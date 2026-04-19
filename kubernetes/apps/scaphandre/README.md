@@ -9,3 +9,4 @@ talosctl read /proc/config.gz | zcat | grep CONFIG_POWERCAP
 
 # Links
 * https://hubblo-org.github.io/scaphandre-documentation/tutorials/kubernetes.html
+* https://github.com/hubblo-org/scaphandre/tree/main
