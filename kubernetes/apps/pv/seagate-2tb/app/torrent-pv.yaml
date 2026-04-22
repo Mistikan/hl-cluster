@@ -12,7 +12,7 @@ spec:
     apiVersion: v1
     kind: PersistentVolumeClaim
     name: seagate-barracuda-2tb-pool-torrent-pvc # name of pvc which can claim this PV
-    namespace: default # namespace for the pvc
+    namespace: qbittorrent # namespace for the pvc
   csi:
     driver: zfs.csi.openebs.io
     fsType: zfs

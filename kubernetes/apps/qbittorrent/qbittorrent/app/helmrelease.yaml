@@ -102,19 +102,19 @@ spec:
       #   defaultMode: 0775
       #   globalMounts:
       #     - readOnly: true
-      media-wd-green:
-        type: hostPath
-        hostPath: /var/mnt/zfs/wd_green_1tb_pool/torrent
-        globalMounts:
-          - path: /media/zfs/wd_green_1tb_pool
-            # TODO: раскомментировать, когда скачаю всё и диск будет только для раздачи
-            # readOnly: true
-      media-wd-blue:
-        existingClaim: wd-blue-1tb-pool-torrent-pvc
-        globalMounts:
-          - path: /media/zfs/wd_blue_1tb_pool
-            # TODO: раскомментировать, когда скачаю всё и диск будет только для раздачи
-            # readOnly: true
+      # media-wd-green:
+      #   type: hostPath
+      #   hostPath: /var/mnt/zfs/wd_green_1tb_pool/torrent
+      #   globalMounts:
+      #     - path: /media/zfs/wd_green_1tb_pool
+      #       # TODO: раскомментировать, когда скачаю всё и диск будет только для раздачи
+      #       # readOnly: true
+      # media-wd-blue:
+      #   existingClaim: wd-blue-1tb-pool-torrent-pvc
+      #   globalMounts:
+      #     - path: /media/zfs/wd_blue_1tb_pool
+      #       # TODO: раскомментировать, когда скачаю всё и диск будет только для раздачи
+      #       # readOnly: true
       media-seagate-barracuda:
         existingClaim: seagate-barracuda-2tb-pool-torrent-pvc
         globalMounts:
