@@ -1,5 +1,6 @@
 # hl-cluster (homelab-cluster)
 ## TODO
+* описать как настраивать wstunnel со стороны сервера (nginx + wstunnel + socat)
 * установить bitmagnet для сборки статистики
 * подружить с cloudflare
 * настроить ingress - его новую реализацию envoy
