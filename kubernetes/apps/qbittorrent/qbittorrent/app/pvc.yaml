@@ -17,8 +17,33 @@ metadata:
   name: seagate-barracuda-2tb-pool-torrent-pvc
 spec:
   storageClassName: openebs-seagate-barracuda-2tb-pool
+  volumeName: seagate-barracuda-2tb-pool-torrent-pv
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 200Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: seagate-barracuda-2tb-pool-torrent-pv
+spec:
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: openebs-seagate-barracuda-2tb-pool
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: zfs.csi.openebs.io
+    volumeHandle: torrent
+    fsType: zfs
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - anaconda
