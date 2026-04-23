@@ -37,7 +37,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: zfs.csi.openebs.io
-    volumeHandle: torrent
+    volumeHandle: torrent # Это название dataset
     fsType: zfs
   nodeAffinity:
     required:
