@@ -22,7 +22,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 200Gi
+      storage: 400Gi
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -30,7 +30,7 @@ metadata:
   name: seagate-barracuda-2tb-pool-torrent-pv
 spec:
   capacity:
-    storage: 200Gi
+    storage: 400Gi
   accessModes:
     - ReadWriteOnce
   storageClassName: openebs-seagate-barracuda-2tb-pool
