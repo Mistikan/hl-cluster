@@ -39,7 +39,11 @@ spec:
               POSTGRES_PORT: "5432"
               POSTGRES_USER: bitmagnet
               POSTGRES_NAME: bitmagnet
-              # POSTGRES_PASSWORD:
+              POSTGRES_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: bitmagnet.postgresql-bitmagnet.credentials.postgresql.acid.zalan.do
+                    key: password
             resources:
               requests:
                 cpu: 100m
