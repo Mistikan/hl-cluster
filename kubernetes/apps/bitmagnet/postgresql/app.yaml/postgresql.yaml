@@ -1,0 +1,18 @@
+---
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: bitmagnet
+spec:
+  volume:
+    size: 20Gi
+  numberOfInstances: 1
+  users:
+    postgres:
+    - superuser
+    - createdb
+    bitmagnet: []
+  databases:
+    bitmagnet: bitmagnet
+  postgresql:
+    version: "18"
