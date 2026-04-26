@@ -5,7 +5,7 @@ metadata:
   name: postgres-operator
 spec:
   interval: 1h
-  path: ./kubernetes/apps/postgresql/postgresql/postgres-operator
+  path: ./kubernetes/apps/postgresql/postgres-operator
   postBuild:
     substituteFrom:
       - name: cluster-secrets
