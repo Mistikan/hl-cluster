@@ -4,6 +4,7 @@ kind: postgresql
 metadata:
   name: bitmagnet
 spec:
+  teamId: "bitmagnet"
   volume:
     size: 20Gi
   numberOfInstances: 1
@@ -15,4 +16,4 @@ spec:
   databases:
     bitmagnet: bitmagnet
   postgresql:
-    version: "18"
+    version: "17"
