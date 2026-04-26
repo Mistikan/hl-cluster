@@ -5,6 +5,13 @@ metadata:
   name: "postgresql-bitmagnet"
 spec:
   teamId: "bitmagnet"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+    limits:
+      cpu: 1000m
+      memory: 2048Mi
   volume:
     size: 20Gi
     storageClass: "openebs-seagate-barracuda-2tb-pool"
