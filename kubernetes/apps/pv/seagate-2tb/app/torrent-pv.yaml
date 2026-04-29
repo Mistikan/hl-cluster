@@ -5,7 +5,7 @@ metadata:
   name: seagate-barracuda-2tb-pool-torrent-pv
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   capacity:
     storage: 200Gi # size of the volume
   claimRef:

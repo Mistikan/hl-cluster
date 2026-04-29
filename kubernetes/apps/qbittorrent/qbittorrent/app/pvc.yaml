@@ -19,7 +19,7 @@ spec:
   storageClassName: openebs-seagate-barracuda-2tb-pool
   volumeName: seagate-barracuda-2tb-pool-torrent-pv
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 400Gi
@@ -32,7 +32,7 @@ spec:
   capacity:
     storage: 400Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: openebs-seagate-barracuda-2tb-pool
   persistentVolumeReclaimPolicy: Retain
   csi:
