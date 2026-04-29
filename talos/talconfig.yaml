@@ -63,6 +63,8 @@ nodes:
             - siderolabs/intel-ucode
             # - siderolabs/nut-client # TODO: включить, когда буду подключать UPS
             - siderolabs/zfs
+            - siderolabs/nfsd
+            - siderolabs/nfsrahead
     # extraManifests:
     patches:
       - "@./patches/anaconda/volumeconfig.yaml"
