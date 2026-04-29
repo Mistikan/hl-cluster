@@ -35,11 +35,11 @@ nodes:
       #   parameters:
       #     - ignore_resource_conflict=1
       #     - force_id=0x8628
-    # https://factory.talos.dev/?arch=amd64&cmdline-set=true&extensions=-&extensions=siderolabs%2Famdgpu&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fzfs&platform=metal&target=metal&version=1.10.0
+    # https://factory.talos.dev/?arch=amd64&board=undefined&bootloader=auto&cmdline-set=true&extensions=-&extensions=siderolabs%2Famdgpu&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fnfsd&extensions=siderolabs%2Fnfsrahead&extensions=siderolabs%2Fzfs&platform=metal&secureboot=undefined&target=metal&version=1.12.6
     # Подбанило в России - ты знаешь какое зеркало можно заиспользовать
     # Есть ещё зеркало: talos.volta.cloud
-    # talosImageURL: factory.talos.dev/installer/66f858dd8061486a2340a8b0f3519921198e2da3a7ab4f6f77e371c5ae823faf
-    talosImageURL: talos.volta.cloud/installer/66f858dd8061486a2340a8b0f3519921198e2da3a7ab4f6f77e371c5ae823faf
+    # talosImageURL: factory.talos.dev/installer/ff5675344ad6fbd0e24ca2abad5f2ee372c0f1005b8016572610bf5ebb0361a5
+    talosImageURL: talos.volta.cloud/installer/ff5675344ad6fbd0e24ca2abad5f2ee372c0f1005b8016572610bf5ebb0361a5
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -57,6 +57,7 @@ nodes:
           # TODO: в идеале конечно не подавлять эти сообщения, но пока другого выхода нет
           - pci=noaer
         systemExtensions:
+          # Примечание: если ты сюда добавишь extensions, то это не поможет, т.к. у тебя указан talosImageURL - в нем перечислены extensions
           officialExtensions:
             - siderolabs/amdgpu
             - siderolabs/i915
