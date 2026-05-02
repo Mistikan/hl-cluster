@@ -22,7 +22,7 @@ spec:
     controllers:
       qbittorrent:
         # TODO: поставить 1
-        replicas: 0
+        replicas: 1
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
@@ -124,9 +124,11 @@ spec:
       #       # TODO: раскомментировать, когда скачаю всё и диск будет только для раздачи
       #       # readOnly: true
       media-seagate-barracuda:
-        existingClaim: seagate-barracuda-2tb-pool-torrent-pvc
+        type: "nfs"
+        server: "nfs.local"
+        path: "/export/seagate-barracuda-2tb-pool-torrent-pvc"
         globalMounts:
-          - path: /media/zfs/seagate_barracuda_2tb_pool
+          - path: "/media/zfs/seagate_barracuda_2tb_pool"
             # TODO: раскомментировать, когда скачаю всё и диск будет только для раздачи
             # readOnly: true
       tmp:
