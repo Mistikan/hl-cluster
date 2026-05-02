@@ -38,7 +38,6 @@ nodes:
 
       # For NFS
       - name: nfs
-      - name: nfsd
 
     # https://factory.talos.dev/?arch=amd64&board=undefined&bootloader=auto&cmdline-set=true&extensions=-&extensions=siderolabs%2Famdgpu&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fnfsd&extensions=siderolabs%2Fnfsrahead&extensions=siderolabs%2Fzfs&platform=metal&secureboot=undefined&target=metal&version=1.12.6
     # Подбанило в России - ты знаешь какое зеркало можно заиспользовать
