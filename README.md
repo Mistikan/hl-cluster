@@ -1,5 +1,12 @@
 # hl-cluster (homelab-cluster)
 ## TODO
+* настроить cilium так, чтобы он не занимал gw, а то пиздец:
+    ```
+    user@user-Vostro-5502:~/projects/github/Mistikan/hl-cluster$ kubectl get svc -A | grep 192.168
+    network            k8s-gateway                                       LoadBalancer   10.96.207.34    192.168.88.100   53:30964/UDP                                       13d
+    qbittorrent        qbittorrent                                       LoadBalancer   10.96.149.120   192.168.88.1     50413:31394/TCP,80:32185/TCP                       8d
+    storage            nfs-server                                        LoadBalancer   10.96.230.131   192.168.88.2     2049:32085/TCP                                     3h
+    ```
 * описать как настраивать wstunnel со стороны сервера (nginx + wstunnel + socat)
 * установить bitmagnet для сборки статистики
 * подружить с cloudflare
