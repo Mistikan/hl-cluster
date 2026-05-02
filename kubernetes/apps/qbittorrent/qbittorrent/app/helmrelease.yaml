@@ -125,7 +125,7 @@ spec:
       #       # readOnly: true
       media-seagate-barracuda:
         type: "nfs"
-        server: "nfs.local"
+        server: "nfs-server.storage"
         path: "/export/seagate-barracuda-2tb-pool-torrent-pvc"
         globalMounts:
           - path: "/media/zfs/seagate_barracuda_2tb_pool"
