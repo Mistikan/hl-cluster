@@ -11,7 +11,7 @@ spec:
       memory: 100Mi
     limits:
       cpu: 1000m
-      memory: 2048Mi
+      memory: 3072Mi
   volume:
     size: 20Gi
     storageClass: "openebs-seagate-barracuda-2tb-pool"
