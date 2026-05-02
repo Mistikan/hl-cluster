@@ -45,6 +45,10 @@ spec:
     loadBalancer:
       algorithm: maglev
       mode: "dsr"
+    loadBalancerIPPools:
+      - name:  "my-pool"
+        start: "192.168.88.100"
+        end:   "192.168.88.150"
     localRedirectPolicies:
       enabled: true
     operator:
