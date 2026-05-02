@@ -372,6 +372,13 @@ talosctl get discoveredvolumes
 wakeonlan 18:C0:4D:E0:AB:B5
 ```
 
+# Mise
+## Install
+Установит все пакеты:
+```sh
+mise install
+```
+
 ## Links
 * https://github.com/onedr0p/home-ops
 * https://github.com/buroa/k8s-gitops

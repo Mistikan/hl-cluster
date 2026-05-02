@@ -38,12 +38,15 @@ nodes:
 
       # For NFS
       - name: nfs
+      - name: nfsd
 
-    # https://factory.talos.dev/?arch=amd64&board=undefined&bootloader=auto&cmdline-set=true&extensions=-&extensions=siderolabs%2Famdgpu&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fnfsd&extensions=siderolabs%2Fnfsrahead&extensions=siderolabs%2Fzfs&platform=metal&secureboot=undefined&target=metal&version=1.12.6
+    # https://factory.talos.dev/?arch=amd64&board=undefined&bootloader=auto&cmdline-set=true&extensions=-&extensions=siderolabs%2Famdgpu&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fnfsd&extensions=siderolabs%2Fnfsrahead&extensions=siderolabs%2Fnut-client&extensions=siderolabs%2Fzfs&platform=metal&secureboot=undefined&target=metal&version=1.12.7
     # Подбанило в России - ты знаешь какое зеркало можно заиспользовать
     # Есть ещё зеркало: talos.volta.cloud
-    # talosImageURL: factory.talos.dev/installer/ff5675344ad6fbd0e24ca2abad5f2ee372c0f1005b8016572610bf5ebb0361a5
-    talosImageURL: talos.volta.cloud/installer/ff5675344ad6fbd0e24ca2abad5f2ee372c0f1005b8016572610bf5ebb0361a5
+    # talosImageURL: factory.talos.dev/installer/3aea30efe14f884d8751ada523d18f1059e4fb4aa6dc941093843bb0ddabae2b
+    # Не комментируй эту переменную - она используется при обновлении
+    talosImageURL: talos.volta.cloud/installer/3aea30efe14f884d8751ada523d18f1059e4fb4aa6dc941093843bb0ddabae2b
+    # Можешь заходить в сгенерированный файл и сам ручками подставлять
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -62,11 +65,13 @@ nodes:
           - pci=noaer
         systemExtensions:
           # Примечание: если ты сюда добавишь extensions, то это не поможет, т.к. у тебя указан talosImageURL - в нем перечислены extensions
+          # IMPORTANT: добавляешь extensions - делай именно upgrade
+          # task talos:upgrade-node IP=192.168.88.202
           officialExtensions:
             - siderolabs/amdgpu
             - siderolabs/i915
             - siderolabs/intel-ucode
-            # - siderolabs/nut-client # TODO: включить, когда буду подключать UPS
+            - siderolabs/nut-client # TODO: включить, когда буду подключать UPS
             - siderolabs/zfs
             - siderolabs/nfsd
             - siderolabs/nfsrahead
