@@ -92,10 +92,10 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /export
-      # immich:
-      #   existingClaim: immich
-      #   globalMounts:
-      #     - path: /export/immich
+      seagate-barracuda-2tb-pool-torrent-pvc:
+        existingClaim: seagate-barracuda-2tb-pool-torrent-pvc
+        globalMounts:
+          - path: /export/seagate-barracuda-2tb-pool-torrent-pvc
       # media:
       #   existingClaim: media
       #   globalMounts:
