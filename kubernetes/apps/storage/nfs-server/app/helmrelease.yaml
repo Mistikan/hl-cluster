@@ -2,6 +2,11 @@
 # IMPORTANT: добивайся, чтобы загружался модуль nfsd
 # Проверь, что он находится в talos (версия ядра меняется)
 # talosctl ls /lib/modules/6.18.24-talos/kernel/fs/nfsd/nfsd.ko - должен быть файл
+
+# Монтирование:
+# mkdir /tmp/abc
+# sudo mount -t nfs4 -o proto=tcp,port=2049 192.168.88.102:/seagate-barracuda-2tb-pool-torrent-pvc /tmp/abc
+
 # yaml-language-server: $schema=https://k8s-versioned-schemas.pages.dev/flux/2.8.6/helmrelease_v2.json?values=app-template/4.6.2
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
