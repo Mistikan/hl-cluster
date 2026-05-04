@@ -54,26 +54,26 @@ spec:
             env:
               EXPORTS_MOUNTED: true
               NFS_THREADS: 128
-            probes:
-              startup:
-                enabled: true
-                custom: true
-                spec:
-                  exec:
-                    command:
-                      - sh
-                      - -c
-                      - "showmount -e localhost | grep -q /export"
-              readiness: &probes
-                enabled: true
-                type: TCP
-                port: 2049
-                spec:
-                  periodSeconds: 3
-                  timeoutSeconds: 1
-                  failureThreshold: 2
-                  successThreshold: 1
-              liveness: *probes
+            # probes:
+            #   startup:
+            #     enabled: true
+            #     custom: true
+            #     spec:
+            #       exec:
+            #         command:
+            #           - sh
+            #           - -c
+            #           - "showmount -e localhost | grep -q /export"
+            #   readiness: &probes
+            #     enabled: true
+            #     type: TCP
+            #     port: 2049
+            #     spec:
+            #       periodSeconds: 3
+            #       timeoutSeconds: 1
+            #       failureThreshold: 2
+            #       successThreshold: 1
+            #   liveness: *probes
             securityContext:
               allowPrivilegeEscalation: true
               readOnlyRootFilesystem: false
