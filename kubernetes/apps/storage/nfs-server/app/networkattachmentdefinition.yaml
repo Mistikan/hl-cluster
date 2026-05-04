@@ -10,7 +10,9 @@ spec:
       "cniVersion": "0.3.1",
       "name": "nfs-lan",
       "type": "bridge",
-      "ips": [ "192.168.88.99/24" ],
-      "mac": "c2:b0:57:49:47:f5",
-      "gateway": [ "192.168.88.1" ]
+      "bridge": "enp6s0",
+      "ipam": {
+        "type": "static",
+        "addresses": [{"address": "192.168.88.99/24", "gateway": "192.168.88.1"}]
+      }
     }
