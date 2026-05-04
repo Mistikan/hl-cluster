@@ -81,10 +81,12 @@ spec:
       nfs-server:
         controller: nfs-server
         type: LoadBalancer
-        # externalTrafficPolicy: Local
+        externalTrafficPolicy: Local
         annotations:
           lbipam.cilium.io/ips: "192.168.88.102"
         ports:
+          rpcbind:
+            port: 111
           nfs:
             port: 2049
     persistence:
