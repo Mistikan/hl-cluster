@@ -69,7 +69,7 @@ spec:
                 type: TCP
                 port: 2049
                 spec:
-                  periodSeconds: 3
+                  periodSeconds: 15
                   timeoutSeconds: 1
                   failureThreshold: 2
                   successThreshold: 1
