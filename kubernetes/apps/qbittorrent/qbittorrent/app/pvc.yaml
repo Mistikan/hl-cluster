@@ -10,3 +10,16 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: openebs-zfs-kingston
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: "nfs-seagate-barracuda-2tb-pool-torrent-pvc"
+spec:
+  volumeName: "nfs-seagate-barracuda-2tb-pool-torrent-pv"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 400Gi
+  storageClassName: nfs

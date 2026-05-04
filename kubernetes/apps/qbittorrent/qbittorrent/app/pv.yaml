@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "nfs-seagate-barracuda-2tb-pool-torrent-pv"
+spec:
+  nfs:
+    server: "192.168.88.102"
+    path: "/seagate-barracuda-2tb-pool-torrent-pvc"
+  mountOptions:
+    - proto=tcp
+    - nfsvers=4.2
+    - hard
+  capacity:
+    storage: 400Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
