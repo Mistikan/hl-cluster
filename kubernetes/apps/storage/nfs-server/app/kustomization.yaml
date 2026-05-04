@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./exports.yaml
   - ./helmrelease.yaml
+  - ./networkattachmentdefinition.yaml
   - ./ocirepository.yaml
   - ./priorityclass.yaml
   - ./pv.yaml

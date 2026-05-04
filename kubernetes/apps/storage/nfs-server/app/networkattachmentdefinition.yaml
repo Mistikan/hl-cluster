@@ -1,0 +1,15 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.erwanleboucher.dev/k8s.cni.cncf.io/networkattachmentdefinition_v1.json
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nfs-lan
+spec:
+  config: |-
+    {
+      "cniVersion": "0.3.1",
+      "name": "nfs-lan",
+        "ips": [ "192.168.88.99/24" ],
+        "mac": "c2:b0:57:49:47:f5",
+        "gateway": [ "192.168.88.1" ]
+    }

@@ -28,6 +28,8 @@ spec:
       nfs-server:
         strategy: RollingUpdate
         pod:
+          annotations:
+            k8s.v1.cni.cncf.io/networks: nfs-lan
           priorityClassName: nfs-critical
           securityContext:
             runAsUser: 0
