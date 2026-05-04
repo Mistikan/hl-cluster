@@ -81,10 +81,9 @@ spec:
       nfs-server:
         controller: nfs-server
         type: LoadBalancer
-        externalTrafficPolicy: Local
+        # externalTrafficPolicy: Local
         annotations:
           lbipam.cilium.io/ips: "192.168.88.102"
-          coredns.io/hostname: nfs.local
         ports:
           nfs:
             port: 2049
