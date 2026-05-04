@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
       - name: ubuntu
-        image: ubuntu
+        image: ubuntu:26.04
         command: ["bash", "-c"]
         args: ["sleep infinity"]
         securityContext:

@@ -85,8 +85,9 @@ spec:
         annotations:
           lbipam.cilium.io/ips: "192.168.88.102"
         ports:
-          rpcbind:
-            port: 111
+          # IMPORTANT: смотри обмен со стороны клиента через tcpdump, может станет понятнее
+          # rpcbind:
+          #   port: 111
           nfs:
             port: 2049
     persistence:
