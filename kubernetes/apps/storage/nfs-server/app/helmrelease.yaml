@@ -75,6 +75,11 @@ spec:
               allowPrivilegeEscalation: true
               readOnlyRootFilesystem: false
               privileged: true
+            lifecycle:
+              preStop:
+                exec:
+                  command: ["/bin/sh", "-c", "echo 'Shutting down...' && sleep 60"]
+            terminationGracePeriodSeconds: 120
     service:
       nfs-server:
         controller: nfs-server
