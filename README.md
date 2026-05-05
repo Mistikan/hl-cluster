@@ -386,6 +386,11 @@ wakeonlan 18:C0:4D:E0:AB:B5
 mise install
 ```
 
+# App-template
+```sh
+helm template -f values.yaml oci://ghcr.io/bjw-s-labs/helm/app-template --version 4.6.2
+```
+
 ## Links
 * https://github.com/onedr0p/home-ops
 * https://github.com/buroa/k8s-gitops
