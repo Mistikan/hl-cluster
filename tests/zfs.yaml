@@ -4,12 +4,15 @@
 # zpool status
 # zfs list
 # БУДЬ ОСТОРОЖЕН - ЕСЛИ ТЫ ТАК МОНТИРУЕШЬ, ТО ОНИ МОНТИРУЮТСЯ ТАКЖЕ НА ХОСТЕ - ЭТО МОЖЕТ ПРИВЕСТИ К ПРОБЛЕМАМ МОНТИРОВАНИЯ NFS
-# zfs set mountpoint=/var/mnt/zfs/pool_data                          pool_data
+# zfs set mountpoint=/var/mnt/zfs/pool_data/data                     pool_data/data
 # zfs set mountpoint=/var/mnt/zfs/wd_blue_1tb_pool/torrent           wd_blue_1tb_pool/torrent
 # zfs set mountpoint=/var/mnt/zfs/wd_green_1tb_pool                  wd_green_1tb_pool
 # zfs set mountpoint=/var/mnt/zfs/seagate_barracuda_2tb_pool/torrent seagate_barracuda_2tb_pool/torrent
 # zfs set mountpoint=/var/mnt/zfs/seagate_barracuda_2tb_pool/data    seagate_barracuda_2tb_pool/data
 # zfs get sharenfs
+
+# Сброс mountpoint:
+# zfs set mountpoint=none pool_data/data
 
 # fwupd for bios
 # apt-get install fwupd
