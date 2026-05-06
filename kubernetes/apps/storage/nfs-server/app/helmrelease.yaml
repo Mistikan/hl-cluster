@@ -107,7 +107,11 @@ spec:
       seagate-barracuda-2tb-pool-torrent-pvc:
         existingClaim: seagate-barracuda-2tb-pool-torrent-pvc
         globalMounts:
-          - path: /export/seagate-barracuda-2tb-pool-torrent-pvc
+          - path: /export/seagate-barracuda-2tb-pool/torrent-pvc
+      pool-data-data-pvc:
+        existingClaim: pool-data-data-pvc
+        globalMounts:
+          - path: /export/pool-data/data-pvc
       # media:
       #   existingClaim: media
       #   globalMounts:
