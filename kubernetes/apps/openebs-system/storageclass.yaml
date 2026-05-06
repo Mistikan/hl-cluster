@@ -18,3 +18,23 @@ parameters:
   poolname: "torrent_pool"
 provisioner: zfs.csi.openebs.io
 allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-seagate-barracuda-2tb-pool
+parameters:
+  poolname: "seagate_barracuda_2tb_pool"
+  fstype: "zfs"
+provisioner: zfs.csi.openebs.io
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-pool-data
+parameters:
+  poolname: "pool_data"
+  fstype: "zfs"
+provisioner: zfs.csi.openebs.io
+allowVolumeExpansion: true
