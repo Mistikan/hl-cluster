@@ -3,6 +3,7 @@
 # zpool list
 # zpool status
 # zfs list
+# БУДЬ ОСТОРОЖЕН - ЕСЛИ ТЫ ТАК МОНТИРУЕШЬ, ТО ОНИ МОНТИРУЮТСЯ ТАКЖЕ НА ХОСТЕ - ЭТО МОЖЕТ ПРИВЕСТИ К ПРОБЛЕМАМ МОНТИРОВАНИЯ NFS
 # zfs set mountpoint=/var/mnt/zfs/pool_data                          pool_data
 # zfs set mountpoint=/var/mnt/zfs/wd_blue_1tb_pool/torrent           wd_blue_1tb_pool/torrent
 # zfs set mountpoint=/var/mnt/zfs/wd_green_1tb_pool                  wd_green_1tb_pool
