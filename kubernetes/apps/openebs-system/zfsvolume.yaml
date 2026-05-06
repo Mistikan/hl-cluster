@@ -3,6 +3,7 @@ apiVersion: zfs.openebs.io/v1
 kind: ZFSVolume
 metadata:
   name: data
+  namespace: openebs-system
   labels:
     kubernetes.io/nodename: anaconda
 spec:
