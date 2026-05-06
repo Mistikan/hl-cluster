@@ -6,7 +6,7 @@ metadata:
 spec:
   nfs:
     server: "192.168.88.102"
-    path: "/seagate-barracuda-2tb-pool-torrent-pvc"
+    path: "/seagate-barracuda-2tb-pool/torrent-pvc"
   mountOptions:
     - proto=tcp
     - nfsvers=4.2
