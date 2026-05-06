@@ -8,3 +8,4 @@ resources:
   - ./priorityclass.yaml
   - ./pv.yaml
   - ./pvc.yaml
+  - ./zfsvolume.yaml

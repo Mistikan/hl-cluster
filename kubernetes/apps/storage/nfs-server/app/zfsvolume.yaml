@@ -1,0 +1,14 @@
+---
+apiVersion: zfs.openebs.io/v1
+kind: ZFSVolume
+metadata:
+  name: data
+  namespace: openebs-system
+  labels:
+    kubernetes.io/nodename: anaconda
+spec:
+  capacity: "3543348019200"
+  fsType: zfs
+  ownerNodeID: anaconda
+  poolName: pool_data
+  volumeType: DATASET
