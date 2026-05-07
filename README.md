@@ -1,3 +1,9 @@
+# ВАЖНО
+
+УДАЛИ ФИНАЛИЗАТОР И ЗАВЕДИ УПРАВЛЕНИЕ ZFSVOLUME ПОД FLUXCD!
+ЧИТАЙ: https://github.com/openebs/zfs-localpv/blob/develop/docs/import-existing-volume.md#step-2--attach-the-volume-with-localpv-zfs
+
+
 # hl-cluster (homelab-cluster)
 ## TODO
 * настроить cilium так, чтобы он не занимал gw, а то пиздец:
