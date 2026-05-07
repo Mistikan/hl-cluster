@@ -392,6 +392,7 @@ helm template -f values.yaml oci://ghcr.io/bjw-s-labs/helm/app-template --versio
 ```
 
 # Links
+* https://github.com/openebs/zfs-localpv/blob/develop/docs/import-existing-volume.md - импорт существующего zfs volume
 * https://a-cup-of.coffee/blog/talos-ext/ - есть как генерировать хеши образов
 * https://github.com/onedr0p/home-ops
 * https://github.com/buroa/k8s-gitops
