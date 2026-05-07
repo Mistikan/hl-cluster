@@ -391,7 +391,8 @@ mise install
 helm template -f values.yaml oci://ghcr.io/bjw-s-labs/helm/app-template --version 4.6.2
 ```
 
-## Links
+# Links
+* https://a-cup-of.coffee/blog/talos-ext/ - есть как генерировать хеши образов
 * https://github.com/onedr0p/home-ops
 * https://github.com/buroa/k8s-gitops
 * https://kubesearch.dev/
