@@ -12,3 +12,33 @@ spec:
   ownerNodeID: anaconda
   poolName: pool_data
   volumeType: DATASET
+---
+apiVersion: zfs.openebs.io/v1
+kind: ZFSVolume
+metadata:
+  name: wd-blue-torrent
+  namespace: openebs-system
+  labels:
+    kubernetes.io/nodename: anaconda
+spec:
+  capacity: "1016833507328" # size of the volume in bytes
+  fsType: zfs
+  ownerNodeID: anaconda # should be the nodename where ZPOOL is running
+  poolName: wd_blue_1tb_pool # poolname where the volume is present
+  volumeType: DATASET # whether it is a DATASET or ZVOL
+---
+apiVersion: zfs.openebs.io/v1
+kind: ZFSVolume
+metadata:
+  name: torrent
+  namespace: openebs-system
+  labels:
+    kubernetes.io/nodename: anaconda
+spec:
+  capacity: "214748364800" # size of the volume in bytes
+  fsType: zfs
+  ownerNodeID: anaconda # should be the nodename where ZPOOL is running
+  poolName: seagate_barracuda_2tb_pool # poolname where the volume is present
+  volumeType: DATASET # whether it is a DATASET or ZVOL
+status:
+  state: Ready # state should be Ready as volume is already present
