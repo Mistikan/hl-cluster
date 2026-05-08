@@ -16,6 +16,20 @@ spec:
 apiVersion: zfs.openebs.io/v1
 kind: ZFSVolume
 metadata:
+  name: data-extended
+  namespace: openebs-system
+  labels:
+    kubernetes.io/nodename: anaconda
+spec:
+  capacity: "268435456000" # 250*1024^3 = 250 Gi size of the volume in bytes
+  fsType: zfs
+  ownerNodeID: anaconda
+  poolName: pool_data
+  volumeType: DATASET
+---
+apiVersion: zfs.openebs.io/v1
+kind: ZFSVolume
+metadata:
   name: wd-blue-torrent
   namespace: openebs-system
   labels:

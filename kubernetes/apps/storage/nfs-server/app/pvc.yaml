@@ -24,3 +24,16 @@ spec:
   resources:
     requests:
       storage: 3300Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pool-data-data-extended-pvc
+spec:
+  storageClassName: openebs-pool-data
+  volumeName: pool-data-data-extended-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 250Gi

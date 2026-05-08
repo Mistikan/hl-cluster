@@ -46,3 +46,27 @@ spec:
               operator: In
               values:
                 - anaconda
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pool-data-data-extended-pv
+spec:
+  capacity:
+    storage: 250Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: openebs-pool-data
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: zfs.csi.openebs.io
+    volumeHandle: data-extended # Это название dataset
+    fsType: zfs
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - anaconda

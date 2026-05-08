@@ -112,6 +112,10 @@ spec:
         existingClaim: pool-data-data-pvc
         globalMounts:
           - path: /export/pool-data/data-pvc
+      pool-data-data-extended-pvc:
+        existingClaim: pool-data-data-extended-pvc
+        globalMounts:
+          - path: /export/pool-data/data-extended-pvc
       # media:
       #   existingClaim: media
       #   globalMounts:
