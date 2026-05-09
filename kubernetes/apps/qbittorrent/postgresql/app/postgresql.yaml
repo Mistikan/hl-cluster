@@ -1,0 +1,27 @@
+---
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: "postgresql-qbittorrent"
+spec:
+  teamId: "qbittorrent"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+    limits:
+      cpu: 1000m
+      memory: 3072Mi
+  volume:
+    size: 5Gi
+    storageClass: "openebs-seagate-barracuda-2tb-pool"
+  numberOfInstances: 1
+  users:
+    postgres:
+    - superuser
+    - createdb
+    qbittorrent: []
+  databases:
+    qbittorrent: qbittorrent
+  postgresql:
+    version: "17"
