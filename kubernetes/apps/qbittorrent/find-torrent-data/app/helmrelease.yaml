@@ -55,6 +55,11 @@ spec:
         existingClaim: "nfs-seagate-barracuda-2tb-pool-torrent-pvc"
         globalMounts:
           - path: "/media/zfs/seagate_barracuda_2tb_pool"
+            # readOnly: true
+      nfs-pool-data:
+        existingClaim: "nfs-pool-data-pvc"
+        globalMounts:
+          - path: "/media/zfs/pool-data"
             readOnly: true
       tmp:
         type: emptyDir
