@@ -3,12 +3,14 @@
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
-  name: vpn
+  name: lan
 spec:
+  # TODO: возможно, в routes надо добавить default gw
+  # https://github.com/Diaoul/home-ops/blob/main/kubernetes/apps/network/multus/networks/vpn.yaml
   config: |-
     {
       "cniVersion": "0.3.1",
-      "name": "vpn",
+      "name": lan",
       "plugins": [
         {
           "type": "macvlan",
@@ -16,8 +18,7 @@ spec:
           "mode": "bridge",
           "ipam": {
             "type": "static",
-            "routes": [
-            ]
+            "routes": []
           }
         }
       ]

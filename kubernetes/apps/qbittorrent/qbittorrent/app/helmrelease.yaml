@@ -75,6 +75,14 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |-
+          [{
+            "name": "lan",
+            "namespace": "kube-system",
+            "ips": ["192.168.88.250/24"],
+            "mac": "32:0b:d8:1f:b6:e9"
+          }]
     service:
       app:
         controller: qbittorrent
