@@ -5,6 +5,12 @@ metadata:
   name: "postgresql-qbittorrent"
 spec:
   teamId: "qbittorrent"
+  # Разрешил использование без SSL
+  patroni:
+      pg_hba:
+        - host    all             all             0.0.0.0/0               md5
+        - host    all             all             ::/0                    md5
+        - local   all             all                                     trust
   resources:
     requests:
       cpu: 100m
