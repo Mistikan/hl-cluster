@@ -1,0 +1,60 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app find-torrent-data
+spec:
+  interval: 1m
+  chartRef:
+    kind: OCIRepository
+    name: find-torrent-data
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    controllers:
+      find-torrent-data:
+        replicas: 1
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/mistikan/find-torrent-data
+              tag: sha-462f99a
+            command: ["/bin/bash", "-c"]
+            args: ["sleep inf"]
+            env:
+              POSTGRES_HOST: "postgresql-qbittorrent"
+              POSTGRES_PORT: "5432"
+              POSTGRES_USER: qbittorrent
+              POSTGRES_NAME: qbittorrent
+              POSTGRES_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: qbittorrent.postgresql-qbittorrent.credentials.postgresql.acid.zalan.do
+                    key: password
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+    persistence:
+      media-seagate-barracuda:
+        existingClaim: "nfs-seagate-barracuda-2tb-pool-torrent-pvc"
+        globalMounts:
+          - path: "/media/zfs/seagate_barracuda_2tb_pool"
+            readOnly: true
+      tmp:
+        type: emptyDir
