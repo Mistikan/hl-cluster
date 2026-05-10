@@ -29,3 +29,10 @@ RUST_LOG=info find-torrent-data torrent \
   --search-engine-settings postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_NAME}?sslmode=prefer \
   --output "$REPORT_DIR/$INFO_HASH.json" 2>&1 | tee -a $REPORT_DIR_LOG/$INFO_HASH.log
 ```
+
+# Подсчет
+```sh
+ls /media/zfs/seagate_barracuda_2tb_pool/metadata-all/ | wc -l
+ls /media/zfs/seagate_barracuda_2tb_pool/report | wc -l
+ls /media/zfs/seagate_barracuda_2tb_pool/report-log/ | wc -l
+```
