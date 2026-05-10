@@ -5,7 +5,7 @@ metadata:
   name: seagate-barracuda-2tb-pool-torrent-pv
 spec:
   capacity:
-    storage: 1200Gi
+    storage: 1600Gi
   accessModes:
     - ReadWriteMany
   storageClassName: openebs-seagate-barracuda-2tb-pool

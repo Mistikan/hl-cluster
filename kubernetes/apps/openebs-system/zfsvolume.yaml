@@ -49,7 +49,7 @@ metadata:
   labels:
     kubernetes.io/nodename: anaconda
 spec:
-  capacity: "644245094400" # 1200*1024*1024*512
+  capacity: "858993459200" # 1600*1024*1024*512
   fsType: zfs
   ownerNodeID: anaconda # should be the nodename where ZPOOL is running
   poolName: seagate_barracuda_2tb_pool # poolname where the volume is present
