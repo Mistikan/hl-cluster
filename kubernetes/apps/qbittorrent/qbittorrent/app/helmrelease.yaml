@@ -132,6 +132,9 @@ spec:
               - path: /config/.config/qbt/.qbt.toml
                 subPath: qbt.toml
                 readOnly: true
+              - path: /scripts/add-metadata.sh
+                subPath: add-metadata.sh
+                readOnly: true
       # scripts:
       #   type: configMap
       #   name: qbittorrent-scripts

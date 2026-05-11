@@ -7,3 +7,24 @@ data:
   qbt.toml: |
     [qbittorrent]
     addr       = "http://127.0.0.1:80"
+
+  add-metadata.sh: |
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    METADATA_DIR="/media/zfs/seagate_barracuda_2tb_pool/metadata"
+    DATA_ROOT="/media/zfs/seagate_barracuda_2tb_pool/data"
+
+    shopt -s nullglob
+    for TORRENT_FILE in "${METADATA_DIR}"/*.torrent; do
+      base="${TORRENT_FILE##*/}"
+      id="${base%.torrent}"
+      TORRENT_DATA="${DATA_ROOT}/${id}/"
+
+      echo "Add ${TORRENT_FILE}"
+      qbt torrent add "${TORRENT_FILE}" \
+        --paused \
+        --save-path "${TORRENT_DATA}"
+
+      sleep 1
+    done
