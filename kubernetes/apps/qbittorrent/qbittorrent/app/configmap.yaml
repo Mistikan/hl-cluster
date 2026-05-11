@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: qbittorrent-qbt
+data:
+  qbt.toml: |
+    [qbittorrent]
+    addr       = "http://127.0.0.1:80"

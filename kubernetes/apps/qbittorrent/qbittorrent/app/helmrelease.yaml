@@ -123,6 +123,15 @@ spec:
     persistence:
       config:
         existingClaim: qbittorrent
+      qbt-cli:
+        type: configMap
+        name: qbittorrent-qbt
+        advancedMounts:
+          qbittorrent:
+            qbt:
+              - path: /config/.config/qbt/.qbt.toml
+                subPath: qbt.toml
+                readOnly: true
       # scripts:
       #   type: configMap
       #   name: qbittorrent-scripts
