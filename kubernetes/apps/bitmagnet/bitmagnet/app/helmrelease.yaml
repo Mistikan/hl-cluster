@@ -74,3 +74,9 @@ spec:
         ports:
           http:
             port: 3333
+          bitmagnet-tcp:
+            port: 3334
+            protocol: TCP
+          bitmagnet-udp:
+            port: 3334
+            protocol: UDP
