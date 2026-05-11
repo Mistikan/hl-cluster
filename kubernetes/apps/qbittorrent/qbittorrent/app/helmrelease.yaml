@@ -68,6 +68,16 @@ spec:
                 cpu: 100m
               # limits:
               #   memory: 8Gi
+          qbt:
+            image:
+              repository: ghcr.io/trueforge-org/qbittorrent
+              tag: 5.2@sha256:0b6834ef77187840bb4afac510bfd8c5ead38778d656f5ad6cc1b89baabd8745
+            command: ["/bin/bash"]
+            args: ["-c", "sleep inf"]
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
