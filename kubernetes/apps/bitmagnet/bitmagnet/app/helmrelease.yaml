@@ -29,12 +29,17 @@ spec:
               - worker
               - run
               - --all
+            # https://bitmagnet.io/setup/configuration.html
             env:
               TZ: Europe/Moscow
               TMDB_ENABLED: "false"
               PROCESSOR_CONCURRENCY: "3"
               DHT_CRAWLER_SCALING_FACTOR: "100"
-              DHT_CRAWLER_SAVE_FILES_THRESHOLD: "1000"
+              # Сколько файлов из торрента будет сохранено
+              # DHT_CRAWLER_SAVE_FILES_THRESHOLD: "1000"
+              # Сохранять ли метаданные для хеша - пока решил, что не надо
+              DHT_CRAWLER_SAVE_PIECES: "false"
+              LOG_JSON: "true"
               POSTGRES_HOST: "postgresql-bitmagnet"
               POSTGRES_PORT: "5432"
               POSTGRES_USER: bitmagnet
