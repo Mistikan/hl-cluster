@@ -8,6 +8,7 @@ spec:
   # TODO: возможно, в routes надо добавить default gw
   # https://github.com/Diaoul/home-ops/blob/main/kubernetes/apps/network/multus/networks/vpn.yaml
   #               {"dst": "192.168.88.0/24", "gw": "192.168.88.1"}
+  # talosctl get links
   config: |-
     {
       "cniVersion": "1.1.0",
@@ -15,7 +16,7 @@ spec:
       "plugins": [
         {
           "type": "macvlan",
-          "master": "enp6s0",
+          "master": "ethSel0",
           "mode": "bridge",
           "ipam": {
             "type": "static",
