@@ -26,7 +26,7 @@ spec:
           app:
             image:
               repository: ghcr.io/mistikan/find-torrent-data
-              tag: sha-716a137
+              tag: sha-eeb85d0
             command: ["/bin/bash", "-c"]
             args: ["sleep inf"]
             env:
