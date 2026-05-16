@@ -63,3 +63,7 @@ spec:
             readOnly: true
       tmp:
         type: emptyDir
+      run-screen:
+        type: emptyDir
+        globalMounts:
+          - path: "/run/screen"
