@@ -63,7 +63,7 @@ spec:
         existingClaim: "nfs-pool-data-pvc"
         globalMounts:
           - path: "/media/zfs/pool-data"
-            # readOnly: true
+            readOnly: true
       tmp:
         type: emptyDir
       run-screen:
