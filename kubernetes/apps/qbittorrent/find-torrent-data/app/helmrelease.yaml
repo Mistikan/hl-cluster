@@ -24,9 +24,12 @@ spec:
           reloader.stakater.com/auto: "true"
         containers:
           app:
+            # image:
+            #   repository: ghcr.io/mistikan/find-torrent-data
+            #   tag: sha-eeb85d0
             image:
-              repository: ghcr.io/mistikan/find-torrent-data
-              tag: sha-eeb85d0
+              repository: python
+              tag: 3.14.5
             command: ["/bin/bash", "-c"]
             args: ["sleep inf"]
             env:
@@ -39,28 +42,28 @@ spec:
                   secretKeyRef:
                     name: qbittorrent.postgresql-qbittorrent.credentials.postgresql.acid.zalan.do
                     key: password
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
-    defaultPodOptions:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
-        fsGroupChangePolicy: OnRootMismatch
+            # securityContext:
+            #   allowPrivilegeEscalation: false
+            #   readOnlyRootFilesystem: true
+            #   capabilities: { drop: ["ALL"] }
+    # defaultPodOptions:
+    #   securityContext:
+    #     runAsNonRoot: true
+    #     runAsUser: 1000
+    #     runAsGroup: 1000
+    #     fsGroup: 1000
+    #     fsGroupChangePolicy: OnRootMismatch
     persistence:
       media-seagate-barracuda:
         existingClaim: "nfs-seagate-barracuda-2tb-pool-torrent-pvc"
         globalMounts:
           - path: "/media/zfs/seagate_barracuda_2tb_pool"
-            # readOnly: true
+            readOnly: true
       nfs-pool-data:
         existingClaim: "nfs-pool-data-pvc"
         globalMounts:
           - path: "/media/zfs/pool-data"
-            readOnly: true
+            # readOnly: true
       tmp:
         type: emptyDir
       run-screen:
