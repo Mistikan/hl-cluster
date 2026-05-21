@@ -376,6 +376,11 @@ kubectl get HTTPRoute -A
 ```
 
 ## Talos
+### Debug
+```sh
+talosctl debug docker.io/library/alpine:latest --args /bin/sh
+```
+
 ### Reboot node
 ```sh
 talosctl reboot -m powercycle
@@ -407,8 +412,7 @@ talosctl get discoveredvolumes
 wakeonlan 18:C0:4D:E0:AB:B5
 ```
 
-Не знаю правда или нет, ибо советы в гугле не помогают. [Ссылка](https://vk.com/wall-114738215_2412675).
-Также через [talos](https://docs.siderolabs.com/talos/v1.13/reference/configuration/network/ethernetconfig).
+См. [ethernetconfig](talos/patches/anaconda/ethernetconfig.yaml).
 
 # Mise
 ## Install

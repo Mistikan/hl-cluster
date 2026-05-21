@@ -1,4 +1,4 @@
-# Почему-то не включается, настроил по статье:
+# Если не включается, то настраивай по статье:
 # https://wiki.astralinux.ru/pages/viewpage.action?pageId=1212627
 # talosctl debug docker.io/library/alpine:latest --args /bin/sh
 # apk add ethtool
