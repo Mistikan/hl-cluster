@@ -186,7 +186,7 @@ TODO:
     * [Manual](https://download.gigabyte.com/FileList/Manual/mb_manual_b560m-ds3h-ac_e_v1.pdf)
     * Micro ATX Form Factor; 24.4cm x 24.4cm
     * BIOS:
-      * Version: F11
+      * Version: F12b
       * Date: 12/19/2023
     * FAN control chip: it8689e
       * https://github.com/frankcrawford/it87
@@ -383,7 +383,7 @@ talosctl reboot -m powercycle
 
 ### Poweroff node
 ```sh
-talosctl shutdown
+talosctl shutdown --force
 ```
 
 ### Services
@@ -408,6 +408,7 @@ wakeonlan 18:C0:4D:E0:AB:B5
 ```
 
 Не знаю правда или нет, ибо советы в гугле не помогают. [Ссылка](https://vk.com/wall-114738215_2412675).
+Также через [talos](https://docs.siderolabs.com/talos/v1.13/reference/configuration/network/ethernetconfig).
 
 # Mise
 ## Install

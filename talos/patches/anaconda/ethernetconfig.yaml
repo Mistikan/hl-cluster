@@ -1,0 +1,16 @@
+# Почему-то не включается, настроил по статье:
+# https://wiki.astralinux.ru/pages/viewpage.action?pageId=1212627
+# talosctl debug docker.io/library/alpine:latest --args /bin/sh
+# apk add ethtool
+# ethtool enp3s0
+# ethtool -s enp3s0 wol g
+---
+apiVersion: v1alpha1
+kind: EthernetConfig
+name: enp3s0
+wakeOnLan:
+  # - phy
+  # - unicast
+  # - multicast
+  # - broadcast
+  - magic
