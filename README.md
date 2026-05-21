@@ -407,6 +407,8 @@ talosctl get discoveredvolumes
 wakeonlan 18:C0:4D:E0:AB:B5
 ```
 
+Не знаю правда или нет, ибо советы в гугле не помогают. [Ссылка](https://vk.com/wall-114738215_2412675).
+
 # Mise
 ## Install
 Установит все пакеты:
