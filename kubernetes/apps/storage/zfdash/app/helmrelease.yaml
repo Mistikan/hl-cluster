@@ -32,7 +32,7 @@ spec:
           zfdash:
             image:
               repository: ghcr.io/ad4mts/zfdash
-              tag: v1.9.3@sha256:4c52b9aa4954bdf41a705ef5750cba3836d3f1addb8427c97e7f66f7b354a054
+              tag: v1.9.6@sha256:494d164443087c5de0c13e688c830a121a5e085fb5a8315adbab65cdb9c378fb
             probes:
               readiness: &probes
                 enabled: true
