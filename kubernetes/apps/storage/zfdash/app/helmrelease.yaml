@@ -51,7 +51,7 @@ spec:
                 cpu: 10m
                 memory: 20Mi
               limits:
-                devic.es/zfs: 1
+                generic-device-plugin/zfs: 1
                 memory: 100Mi
     service:
       zfdash:
