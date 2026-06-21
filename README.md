@@ -206,8 +206,9 @@ TODO:
   * FAN CPU: [ID-COOLING SE-914-XT BASIC V2](https://www.dns-shop.ru/product/460217bcabebed20/kuler-dla-processora-id-cooling-se-914-xt-basic-v2/)
     * Высота: 126 мм
   * RAM:
-    * KHX2666C16/8G
-    * KHX2666C16/8G
+    * KHX2666C16/8G x 2
+        * [DNS обзор](https://club.dns-shop.ru/review/t-103-operativnaya-pamyat/28648-obzor-i-testirovanie-operativnoi-pamyati-kingston-hyperx-fury-266/)
+        * [Datasheet, да, всё верно](https://www.kingston.com/datasheets/HX426C16FB3_8.pdf)
   * GPU: [Sapphire AMD Radeon RX 7600 PULSE GAMING OC 11324-01-20G](https://www.dns-shop.ru/product/a8002d751e3aed20/videokarta-sapphire-amd-radeon-rx-7600-pulse-gaming-oc-11324-01-20g/)
     * Длина: 240 мм
   * NVME:
