@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: telemt
-        image: ghcr.io/telemt/telemt:3.4.3@sha256:26df2f7eb0c10316e8bb5172fa551a073d2c9f38f5fbad278d085ef1577bddd3
+        image: ghcr.io/telemt/telemt:3.4.25@sha256:acca0ec53323c9f91469c10a982691c94573d720a89a04fe005b57675316ed65
         command: ["/app/telemt"]
         args: ["/etc/telemt/config.toml"]
         ports:

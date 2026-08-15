@@ -97,7 +97,7 @@ spec:
     spec:
       containers:
       - name:  scaphandre
-        image: "hubblo/scaphandre:1.0.2@sha256:d4fb656bfee214440c6745cf2fef040b8e88bbdd3df61c4165df01732acffee4"
+        image: "hubblo/scaphandre:1.0.3@sha256:9f1aa7017c56c6628f6f232ddab336cb1c64c165be179b3d4d3589cf5110dd8e"
         args:
             - prometheus
             - --containers

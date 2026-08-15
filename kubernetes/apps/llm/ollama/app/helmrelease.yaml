@@ -21,7 +21,7 @@ spec:
           app:
             image:
               repository: ollama/ollama
-              tag: 0.21.2-rocm
+              tag: 0.32.13-rocm
             securityContext:
               privileged: true
             env:
@@ -41,7 +41,7 @@ spec:
             image:
               repository: lucabecker42/ollama-exporter
               tag:
-                1.0.1@sha256:4d1d96fae76dbefd6b763d576a12fb9799913ae9a585990a464eacab2b600f55
+                1.0.3@sha256:9fb1f4c5bc4ff819eb13e148debeb7fd474a4c8956d83d39928ea22d95d3de5c
     persistence:
       ollama:
         existingClaim: "{{ .Release.Name }}"
