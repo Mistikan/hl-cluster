@@ -1,9 +1,12 @@
+---
 apiVersion: cdi.kubevirt.io/v1beta1
 kind: CDI
 metadata:
   name: cdi
 spec:
   config:
+    featureGates:
+      - HonorWaitForFirstConsumer
     scratchSpaceStorageClass: local-path
     podResourceRequirements:
       requests:
@@ -12,3 +15,10 @@ spec:
       limits:
         cpu: "750m"
         memory: "2Gi"
+  imagePullPolicy: IfNotPresent
+  infra:
+    nodeSelector:
+      kubernetes.io/os: linux
+  workload:
+    nodeSelector:
+      kubernetes.io/os: linux
