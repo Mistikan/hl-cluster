@@ -6,6 +6,7 @@ metadata:
 parameters:
   fstype: "zfs"
   poolname: "storage"
+  shared: "yes"
 provisioner: zfs.csi.openebs.io
 allowVolumeExpansion: true
 ---
@@ -16,6 +17,7 @@ metadata:
 parameters:
   fstype: "zfs"
   poolname: "torrent_pool"
+  shared: "yes"
 provisioner: zfs.csi.openebs.io
 allowVolumeExpansion: true
 ---
@@ -26,6 +28,7 @@ metadata:
 parameters:
   poolname: "seagate_barracuda_2tb_pool"
   fstype: "zfs"
+  shared: "yes"
 provisioner: zfs.csi.openebs.io
 allowVolumeExpansion: true
 ---
@@ -36,5 +39,6 @@ metadata:
 parameters:
   poolname: "pool_data"
   fstype: "zfs"
+  shared: "yes"
 provisioner: zfs.csi.openebs.io
 allowVolumeExpansion: true

@@ -7,4 +7,5 @@ allowVolumeExpansion: true
 parameters:
   poolname: "wd_blue_1tb_pool"
   fstype: "zfs"
+  shared: "yes"
 provisioner: zfs.csi.openebs.io
