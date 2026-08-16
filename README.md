@@ -436,3 +436,4 @@ helm template -f values.yaml oci://ghcr.io/bjw-s-labs/helm/app-template --versio
 * https://github.com/budimanjojo/talhelper
 * https://github.com/wavyland/wavy
 * https://budimanjojo.com/2021/10/27/variable-substitution-in-flux-gitops/ - принцип работы SECRET_DOMAIN
+* [Правильное обновление роутера openwrt](https://openwrt-router.ru/guides/kak-obnovit-openwrt)
