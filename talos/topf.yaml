@@ -2,7 +2,7 @@
 clusterName: home-kubernetes
 clusterEndpoint: https://192.168.88.202:6443
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-kubernetesVersion: v1.35.6
+kubernetesVersion: v1.36.5
 # renovate: datasource=github-releases depName=siderolabs/talos
 talosVersion: v1.14.1
 
