@@ -1,0 +1,44 @@
+apiVersion: v1alpha1
+kind: KubeAPIServerConfig
+certExtraSANs:
+  - 127.0.0.1
+# Вырубили в 1.34, НЕ ВКЛЮЧАЙ!
+# https://github.com/siderolabs/talos/issues/9980
+# extraArgs:
+#   feature-gates: AuthorizeNodeWithSelectors=false
+---
+# Allow scheduling workloads on the control plane
+apiVersion: v1alpha1
+kind: KubeNodeConfig
+taints:
+  node-role.kubernetes.io/control-plane:
+    $patch: delete
+---
+apiVersion: v1alpha1
+kind: KubeControllerManagerConfig
+extraArgs:
+  bind-address: 0.0.0.0
+---
+apiVersion: v1alpha1
+kind: KubeCoreDNSConfig
+enabled: false
+---
+apiVersion: v1alpha1
+kind: KubeProxyConfig
+enabled: false
+---
+apiVersion: v1alpha1
+kind: KubeSchedulerConfig
+extraArgs:
+  bind-address: 0.0.0.0
+config:
+  profiles:
+    - schedulerName: default-scheduler
+      pluginConfig:
+        - name: PodTopologySpread
+          args:
+            defaultingType: List
+            defaultConstraints:
+              - maxSkew: 1
+                topologyKey: kubernetes.io/hostname
+                whenUnsatisfiable: ScheduleAnyway

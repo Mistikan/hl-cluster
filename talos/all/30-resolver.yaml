@@ -1,0 +1,14 @@
+apiVersion: v1alpha1
+kind: ResolverConfig
+nameservers:
+  # TODO: в будущем, если я буду обходить блокировки, потребуется пересмотреть эту настройку
+  # - address: 192.168.88.1
+  # - address: 1.1.1.1
+  - address: 8.8.8.8
+  - address: 8.8.4.4
+searchDomains:
+  disableDefault: true
+hostDNS:
+  enabled: true
+  resolveMemberNames: true
+  forwardKubeDNSToHost: true # Requires Cilium `bpf.masquerade: false`

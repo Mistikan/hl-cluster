@@ -112,10 +112,10 @@ tasks:
   validate-talos-config:
     internal: true
     dir: '{{.TALOS_DIR}}'
-    cmd: talhelper validate talconfig {{.TALOS_DIR}}/talconfig.yaml
+    cmd: out="$(mktemp -d)" && topf render -o "$out" > /dev/null; rc=$?; rm -rf "$out"; exit $rc
     preconditions:
-      - test -f {{.TALOS_DIR}}/talconfig.yaml
-      - which talhelper
+      - test -f {{.TALOS_DIR}}/topf.yaml
+      - which topf
 
   debug:
     desc: Gather common resources in your cluster

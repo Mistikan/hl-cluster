@@ -1,0 +1,31 @@
+apiVersion: v1alpha1
+kind: UnattendedInstallConfig
+provisioning:
+  diskSelector:
+    match: disk.serial == "50026B76862410D9"
+  wipe: false
+---
+apiVersion: v1alpha1
+kind: KernelModuleConfig
+name: zfs
+---
+# Inside a privileged container: mount -t debugfs none /sys/kernel/debug
+# after which /sys/kernel/debug/pmc_core/ becomes available
+apiVersion: v1alpha1
+kind: KernelModuleConfig
+name: intel_pmc_core
+# ---
+# apiVersion: v1alpha1
+# kind: KernelModuleConfig
+# name: it87
+# parameters:
+#   - ignore_resource_conflict=1
+#   - force_id=0x8628
+---
+apiVersion: v1alpha1
+kind: KernelModuleConfig
+name: nfs
+---
+apiVersion: v1alpha1
+kind: KernelModuleConfig
+name: nfsd

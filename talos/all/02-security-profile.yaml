@@ -1,0 +1,5 @@
+# The cluster predates Talos 1.14: keep containerd, kubelet and pods in the
+# host namespaces. Switching workload isolation on requires a reboot.
+apiVersion: v1alpha1
+kind: SecurityProfileConfig
+workloadIsolation: false

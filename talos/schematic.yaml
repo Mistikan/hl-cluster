@@ -1,0 +1,9 @@
+customization:
+  systemExtensions:
+    officialExtensions:
+      - siderolabs/amdgpu
+      - siderolabs/i915
+      - siderolabs/intel-ucode
+      - siderolabs/nfsd
+      - siderolabs/nfsrahead
+      - siderolabs/zfs

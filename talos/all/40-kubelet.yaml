@@ -1,0 +1,16 @@
+apiVersion: v1alpha1
+kind: KubeletConfig
+extraArgs:
+  rotate-server-certificates: "true"
+config:
+  imageMaximumGCAge: 168h
+  maxParallelImagePulls: 3
+  serializeImagePulls: false
+  shutdownGracePeriod: 90s
+  shutdownGracePeriodCriticalPods: 60s
+---
+apiVersion: v1alpha1
+kind: KubeNodeConfig
+nodeIP:
+  validSubnets:
+    - 192.168.88.0/24

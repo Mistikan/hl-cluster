@@ -1,0 +1,15 @@
+machine:
+  certSANs:
+    - 127.0.0.1
+---
+apiVersion: v1alpha1
+kind: KubeNetworkConfig
+podSubnets:
+  - 10.69.0.0/16
+serviceSubnets:
+  - 10.96.0.0/16
+---
+# Cilium is installed instead of the built-in Flannel
+apiVersion: v1alpha1
+kind: KubeFlannelCNIConfig
+$patch: delete

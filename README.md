@@ -410,10 +410,10 @@ talosctl get discoveredvolumes
 ## WOL
 Включить сервер:
 ```sh
-wakeonlan 18:C0:4D:E0:AB:B5
+wakeonlan D8:5E:D3:A3:AC:85
 ```
 
-См. [ethernetconfig](talos/patches/anaconda/ethernetconfig.yaml).
+См. [ethernetconfig](talos/node/anaconda/30-ethernetconfig.yaml).
 
 # Mise
 ## Install
@@ -433,7 +433,7 @@ helm template -f values.yaml oci://ghcr.io/bjw-s-labs/helm/app-template --versio
 * https://github.com/onedr0p/home-ops
 * https://github.com/buroa/k8s-gitops
 * https://kubesearch.dev/
-* https://github.com/budimanjojo/talhelper
+* https://github.com/postfinance/topf
 * https://github.com/wavyland/wavy
 * https://budimanjojo.com/2021/10/27/variable-substitution-in-flux-gitops/ - принцип работы SECRET_DOMAIN
 * [Правильное обновление роутера openwrt](https://openwrt-router.ru/guides/kak-obnovit-openwrt)
