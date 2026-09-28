@@ -12,6 +12,14 @@ tasks:
       - test -f {{.SOPS_AGE_KEY_FILE}}
       - which topf sops
 
+  render-check:
+    internal: true
+    dir: '{{.TALOS_DIR}}'
+    cmd: out="$(mktemp -d)" && topf render -o "$out" > /dev/null; rc=$?; rm -rf "$out"; exit $rc
+    preconditions:
+      - test -f {{.TALOS_DIR}}/topf.yaml
+      - which topf
+
   apply:
     desc: Apply Talos config to the nodes [MODE=auto|no-reboot|staged|reboot] [DRY_RUN=true]
     dir: '{{.TALOS_DIR}}'

@@ -18,19 +18,19 @@
   schedule: ["every weekend"],
   ignorePaths: ["**/*.sops.*"],
   flux: {
-    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"],
+    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"],
   },
   "helm-values": {
-    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"],
+    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"],
   },
   helmfile: {
-    fileMatch: ["(^|/)helmfile\\.ya?ml(?:\\.j2)?$"],
+    fileMatch: ["(^|/)helmfile\\.ya?ml$"],
   },
   kubernetes: {
-    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"],
+    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"],
   },
   kustomize: {
-    fileMatch: ["(^|/)kustomization\\.ya?ml(?:\\.j2)?$"],
+    fileMatch: ["(^|/)kustomization\\.ya?ml$"],
   },
   packageRules: [
     {
@@ -145,9 +145,9 @@
       description: "Process annotated dependencies",
       customType: "regex",
       fileMatch: [
-        "(^|/).+\\.env(?:\\.j2)?$",
-        "(^|/).+\\.sh(?:\\.j2)?$",
-        "(^|/).+\\.ya?ml(?:\\.j2)?$",
+        "(^|/).+\\.env$",
+        "(^|/).+\\.sh$",
+        "(^|/).+\\.ya?ml$",
       ],
       matchStrings: [
         // # renovate: datasource=github-releases depName=k3s-io/k3s

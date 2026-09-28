@@ -21,7 +21,6 @@ env:
 includes:
   bootstrap: .taskfiles/bootstrap
   talos: .taskfiles/talos
-  template: .taskfiles/template
 
 tasks:
 
@@ -33,3 +32,22 @@ tasks:
     preconditions:
       - test -f {{.KUBECONFIG}}
       - which flux
+
+  validate:
+    desc: Validate Kubernetes manifests and Talos config
+    cmds:
+      - bash {{.SCRIPTS_DIR}}/kubeconform.sh {{.KUBERNETES_DIR}}
+      - task: talos:render-check
+    preconditions:
+      - which kubeconform kustomize
+
+  debug:
+    desc: Gather common resources in your cluster
+    cmds:
+      - for:
+          matrix:
+            RESOURCE: [certificates, certificaterequests, gitrepositories, helmrepositories, helmreleases, httproutes, kustomizations, nodes, pods]
+        cmd: kubectl get --all-namespaces {{.ITEM.RESOURCE}}
+    preconditions:
+      - test -f {{.KUBECONFIG}}
+      - which kubectl
