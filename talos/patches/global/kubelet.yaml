@@ -2,6 +2,12 @@ machine:
   kubelet:
     extraArgs:
       rotate-server-certificates: true
+    extraConfig:
+      imageMaximumGCAge: 168h
+      maxParallelImagePulls: 3
+      serializeImagePulls: false
+      shutdownGracePeriod: 90s
+      shutdownGracePeriodCriticalPods: 60s
     nodeIP:
       validSubnets:
         - 192.168.88.0/24
