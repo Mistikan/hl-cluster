@@ -8,7 +8,8 @@ spec:
   certificateRotateStrategy: {}
   configuration:
     developerConfiguration:
-      featureGates: []
+      featureGates:
+        - HostDevices
     imagePullPolicy: IfNotPresent
     permittedHostDevices:
       pciHostDevices:
