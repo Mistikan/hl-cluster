@@ -29,3 +29,8 @@ name: nfs
 apiVersion: v1alpha1
 kind: KernelModuleConfig
 name: nfsd
+---
+# Нужен, чтобы virt-handler забрал Kingston NV3 (2646:5025) у драйвера nvme.
+apiVersion: v1alpha1
+kind: KernelModuleConfig
+name: vfio_pci
