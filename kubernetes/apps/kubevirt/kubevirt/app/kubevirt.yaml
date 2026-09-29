@@ -18,4 +18,6 @@ spec:
       family: "ccio"
   customizeComponents: {}
   imagePullPolicy: IfNotPresent
+  infra:
+    replicas: 1
   workloadUpdateStrategy: {}
