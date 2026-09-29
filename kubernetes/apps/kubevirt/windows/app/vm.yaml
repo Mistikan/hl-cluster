@@ -1,0 +1,40 @@
+---
+# Windows стоит на Kingston NV3 SNV3S1000G. В гостя уходит весь NVMe (PCI 2646:5025),
+# чтобы загрузчик увидел тот же контроллер, что и на железе.
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: windows
+spec:
+  runStrategy: Halted
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: windows
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: anaconda
+      domain:
+        machine:
+          type: q35
+        firmware:
+          bootloader:
+            efi:
+              secureBoot: false
+        cpu:
+          cores: 4
+          model: host-passthrough
+        resources:
+          requests:
+            memory: 8Gi
+        devices:
+          interfaces:
+            - name: default
+              model: e1000e
+              masquerade: {}
+          hostDevices:
+            - name: kingston-snv3s1000g
+              deviceName: kubevirt.io/kingston-snv3s1000g
+      networks:
+        - name: default
+          pod: {}
