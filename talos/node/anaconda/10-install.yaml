@@ -39,3 +39,8 @@ apiVersion: v1alpha1
 kind: PCIDriverRebindConfig
 name: "0000:04:00.0"
 targetDriver: vfio-pci
+---
+apiVersion: v1alpha1
+kind: KernelModuleConfig
+name: vfio_iommu_type1
+
