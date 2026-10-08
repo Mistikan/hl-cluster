@@ -16,6 +16,11 @@ spec:
         # Kingston NV3 SNV3S1000G. Не путать с KC3000 (2646:5013), на котором пул ZFS storage.
         - pciVendorSelector: "2646:5025"
           resourceName: kubevirt.io/kingston-snv3s1000g
+        # Sapphire Radeon RX 7600 (Navi 33): VGA и HDMI/DP audio одной карты.
+        - pciVendorSelector: "1002:7480"
+          resourceName: kubevirt.io/radeon-rx-7600
+        - pciVendorSelector: "1002:ab30"
+          resourceName: kubevirt.io/radeon-rx-7600-audio
     smbios:
       sku: "TalosCloud"
       version: "v0.1.0"

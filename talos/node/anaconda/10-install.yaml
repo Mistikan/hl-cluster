@@ -30,7 +30,7 @@ apiVersion: v1alpha1
 kind: KernelModuleConfig
 name: nfsd
 ---
-# Нужен, чтобы virt-handler забрал Kingston NV3 (2646:5025) у драйвера nvme.
+# Нужен, чтобы virt-handler забрал устройства у хостовых драйверов (nvme, amdgpu).
 apiVersion: v1alpha1
 kind: KernelModuleConfig
 name: vfio_pci
@@ -38,6 +38,17 @@ name: vfio_pci
 apiVersion: v1alpha1
 kind: PCIDriverRebindConfig
 name: "0000:04:00.0"
+targetDriver: vfio-pci
+---
+# Radeon RX 7600: VGA 03:00.0 (1002:7480) и HDMI/DP audio 03:00.1 (1002:ab30).
+apiVersion: v1alpha1
+kind: PCIDriverRebindConfig
+name: "0000:03:00.0"
+targetDriver: vfio-pci
+---
+apiVersion: v1alpha1
+kind: PCIDriverRebindConfig
+name: "0000:03:00.1"
 targetDriver: vfio-pci
 ---
 apiVersion: v1alpha1
