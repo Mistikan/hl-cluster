@@ -407,6 +407,12 @@ talosctl get volumestatus
 talosctl get discoveredvolumes
 ```
 
+## Virtctl
+### Проброс port
+```sh
+virtctl vnc windows -n kubevirt --proxy-only --port 5901
+```
+
 ## WOL
 Включить сервер:
 ```sh
