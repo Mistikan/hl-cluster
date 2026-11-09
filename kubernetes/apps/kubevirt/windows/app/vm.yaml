@@ -28,6 +28,8 @@ spec:
           requests:
             memory: 8Gi
         devices:
+          # Отключаем встроенную виртуальную видеокарту (VNC)
+          autoattachGraphicsDevice: false
           interfaces:
             - name: default
               model: e1000e
