@@ -28,7 +28,9 @@ spec:
           requests:
             memory: 8Gi
         devices:
-          # Отключаем встроенную виртуальную видеокарту (VNC)
+          # QEMU не принимает display=on/ramfb на этой карте:
+          # vfio 0000:03:00.0: device doesn't support any (known) display method.
+          # HDMI зажигает гостевой драйвер AMD, а не VNC-display KubeVirt.
           autoattachGraphicsDevice: false
           interfaces:
             - name: default

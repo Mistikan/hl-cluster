@@ -408,6 +408,11 @@ talosctl get discoveredvolumes
 ```
 
 ## Virtctl
+### Виртуальные машины
+```sh
+kubectl get virtualmachine
+```
+
 ### Проброс port
 ```sh
 virtctl vnc windows -n kubevirt --proxy-only --port 5901
