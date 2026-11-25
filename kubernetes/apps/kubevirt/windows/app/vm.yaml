@@ -16,7 +16,7 @@ spec:
         kubernetes.io/hostname: anaconda
       domain:
         machine:
-          type: pc-q35-10.2
+          type: q35
         firmware:
           bootloader:
             efi:
