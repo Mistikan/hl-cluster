@@ -22,6 +22,12 @@ spec:
           resourceName: kubevirt.io/radeon-rx-7600
         - pciVendorSelector: "1002:ab30"
           resourceName: kubevirt.io/radeon-rx-7600-audio
+      usb:
+        # Genesys Logic USB 2.0 hub на физическом порту 1-9.
+        - resourceName: kubevirt.io/usb2-hub
+          selectors:
+            - vendor: "05e3"
+              product: "0608"
     smbios:
       sku: "TalosCloud"
       version: "v0.1.0"

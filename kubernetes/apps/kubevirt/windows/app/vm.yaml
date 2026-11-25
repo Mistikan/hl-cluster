@@ -75,6 +75,8 @@ spec:
               deviceName: kubevirt.io/radeon-rx-7600
             - name: radeon-rx-7600-audio
               deviceName: kubevirt.io/radeon-rx-7600-audio
+            - name: usb2-hub
+              deviceName: kubevirt.io/usb2-hub
       networks:
         - name: default
           pod: {}
