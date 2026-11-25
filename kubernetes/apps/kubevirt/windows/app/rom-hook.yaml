@@ -1,0 +1,40 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: windows-dummy-rom-hook
+data:
+  onDefineDomain.sh: |
+    #!/bin/sh
+    set -eu
+
+    rom=/rom/dummy.rom
+    if [ ! -f "$rom" ] || [ "$(wc -c < "$rom")" -ne 65536 ]; then
+      dd if=/dev/zero of="$rom" bs=1024 count=64 2>/dev/null
+      chmod 0644 "$rom"
+    fi
+
+    domain_xml=$(mktemp)
+    printf '%s' "$4" > "$domain_xml"
+    sed -i \
+      '/<alias name="ua-hostdevice-radeon-rx-7600"\/>/i\      <rom bar="on" file="/rom/dummy.rom"/>' \
+      "$domain_xml"
+
+    if [ "$(grep -c 'file="/rom/dummy.rom"' "$domain_xml")" -ne 1 ]; then
+      echo "failed to attach dummy ROM to Radeon RX 7600" >&2
+      exit 1
+    fi
+
+    cat "$domain_xml"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: windows-dummy-rom
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: openebs-hostpath
+  resources:
+    requests:
+      storage: 1Mi

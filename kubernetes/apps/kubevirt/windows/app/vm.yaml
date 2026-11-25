@@ -9,6 +9,9 @@ spec:
   runStrategy: Always
   template:
     metadata:
+      annotations:
+        hooks.kubevirt.io/hookSidecars: >-
+          [{"args":["--version","v1alpha2"],"configMap":{"name":"windows-dummy-rom-hook","key":"onDefineDomain.sh","hookPath":"/usr/bin/onDefineDomain"},"pvc":{"name":"windows-dummy-rom","volumePath":"/rom","sharedComputePath":"/rom"}}]
       labels:
         kubevirt.io/domain: windows
     spec:
