@@ -34,7 +34,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: openebs-hostpath
+  storageClassName: openebs-zfs-kingston
   resources:
     requests:
       storage: 1Mi
