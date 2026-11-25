@@ -75,10 +75,10 @@ spec:
               deviceName: kubevirt.io/radeon-rx-7600
             - name: radeon-rx-7600-audio
               deviceName: kubevirt.io/radeon-rx-7600-audio
-            - name: usb2-hub
-              deviceName: kubevirt.io/usb2-hub
-            - name: usb21-hub
-              deviceName: kubevirt.io/usb21-hub
+            - name: tiger-lake-xhci
+              deviceName: kubevirt.io/tiger-lake-xhci
+            - name: tiger-lake-shared-sram
+              deviceName: kubevirt.io/tiger-lake-shared-sram
       networks:
         - name: default
           pod: {}
