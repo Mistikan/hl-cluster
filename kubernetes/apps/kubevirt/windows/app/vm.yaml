@@ -16,7 +16,7 @@ spec:
         kubernetes.io/hostname: anaconda
       domain:
         machine:
-          type: q35
+          type: pc-q35-10.2
         firmware:
           bootloader:
             efi:
@@ -24,6 +24,34 @@ spec:
         cpu:
           cores: 4
           model: host-passthrough
+        features:
+          hyperv:
+            relaxed: {}
+            vapic: {}
+            spinlocks:
+              spinlocks: 8191
+            vpindex: {}
+            runtime: {}
+            synic: {}
+            synictimer: {}
+            vendorid:
+              vendorid: 9ceac4f2f302
+            frequencies: {}
+            tlbflush: {}
+            ipi: {}
+            evmcs: {}
+          kvm:
+            hidden: true
+        clock:
+          timer:
+            rtc:
+              tickPolicy: catchup
+            pit:
+              tickPolicy: delay
+            hpet:
+              present: false
+            hyperv:
+              present: true
         resources:
           requests:
             memory: 8Gi
