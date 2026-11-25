@@ -2,9 +2,9 @@
 clusterName: home-kubernetes
 clusterEndpoint: https://192.168.88.202:6443
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-kubernetesVersion: v1.36.5
+kubernetesVersion: v1.36.6
 # renovate: datasource=github-releases depName=siderolabs/talos
-talosVersion: v1.14.1
+talosVersion: v1.14.7
 
 # factory.talos.dev is blocked in Russia; talos.volta.cloud mirrors it.
 factory: talos.volta.cloud
