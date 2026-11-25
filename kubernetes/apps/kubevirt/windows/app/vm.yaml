@@ -6,7 +6,8 @@ kind: VirtualMachine
 metadata:
   name: windows
 spec:
-  runStrategy: Always
+  # runStrategy: Always
+  runStrategy: Manual
   template:
     metadata:
       annotations:
