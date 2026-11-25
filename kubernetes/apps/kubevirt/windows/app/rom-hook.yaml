@@ -17,7 +17,7 @@ data:
     domain_xml=$(mktemp)
     printf '%s' "$4" > "$domain_xml"
     sed -i \
-      '/<alias name="ua-hostdevice-radeon-rx-7600"\/>/i\      <rom bar="on" file="/rom/dummy.rom"/>' \
+      '/<alias name="ua-hostdevice-radeon-rx-7600"/i\      <rom bar="on" file="/rom/dummy.rom"/>' \
       "$domain_xml"
 
     if [ "$(grep -c 'file="/rom/dummy.rom"' "$domain_xml")" -ne 1 ]; then
