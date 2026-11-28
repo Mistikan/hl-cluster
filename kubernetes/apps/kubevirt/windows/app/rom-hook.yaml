@@ -9,10 +9,13 @@ data:
     set -eu
 
     rom=/rom/dummy.rom
-    if [ ! -f "$rom" ] || [ "$(wc -c < "$rom")" -ne 65536 ]; then
+    if [ ! -f "$rom" ] ; then
       dd if=/dev/zero of="$rom" bs=1024 count=64 2>/dev/null
       chmod 0644 "$rom"
     fi
+
+    echo "Hash /rom/dummy.rom:"
+    sha256sum /rom/dummy.rom
 
     domain_xml=$(mktemp)
     printf '%s' "$4" > "$domain_xml"
