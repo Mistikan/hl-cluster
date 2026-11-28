@@ -68,11 +68,12 @@ spec:
             - name: default
               model: e1000e
               masquerade: {}
+          gpus:
+            - name: radeon-rx-7600
+              deviceName: kubevirt.io/radeon-rx-7600
           hostDevices:
             - name: kingston-snv3s1000g
               deviceName: kubevirt.io/kingston-snv3s1000g
-            - name: radeon-rx-7600
-              deviceName: kubevirt.io/radeon-rx-7600
             - name: radeon-rx-7600-audio
               deviceName: kubevirt.io/radeon-rx-7600-audio
             - name: usb2-hub
