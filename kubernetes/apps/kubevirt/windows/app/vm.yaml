@@ -76,10 +76,10 @@ spec:
               deviceName: kubevirt.io/kingston-snv3s1000g
             - name: radeon-rx-7600-audio
               deviceName: kubevirt.io/radeon-rx-7600-audio
-            - name: usb2-hub
-              deviceName: kubevirt.io/usb2-hub
-            - name: usb21-hub
-              deviceName: kubevirt.io/usb21-hub
+            # - name: usb2-hub
+            #   deviceName: kubevirt.io/usb2-hub
+            # - name: usb21-hub
+            #   deviceName: kubevirt.io/usb21-hub
       networks:
         - name: default
           pod: {}
