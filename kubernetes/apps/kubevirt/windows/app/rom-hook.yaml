@@ -8,20 +8,20 @@ data:
     #!/bin/sh
     set -eu
 
-    rom=/rom/dummy.rom
+    rom=/rom/nv33-pci.rom
     if [ ! -f "$rom" ] ; then
-      dd if=/dev/zero of="$rom" bs=1024 count=64 2>/dev/null
-      chmod 0644 "$rom"
+      echo "missing $rom" >&2
+      exit 1
     fi
 
     domain_xml=$(mktemp)
     printf '%s' "$4" > "$domain_xml"
     sed -i \
-      '/<alias name="ua-gpu-radeon-rx-7600"/i\      <rom bar="on" file="/rom/dummy.rom"/>' \
+      '/<alias name="ua-gpu-radeon-rx-7600"/i\      <rom bar="on" file="/rom/nv33-pci.rom"/>' \
       "$domain_xml"
 
-    if [ "$(grep -c 'file="/rom/dummy.rom"' "$domain_xml")" -ne 1 ]; then
-      echo "failed to attach dummy ROM to Radeon RX 7600" >&2
+    if [ "$(grep -c 'file="/rom/nv33-pci.rom"' "$domain_xml")" -ne 1 ]; then
+      echo "failed to attach nv33-pci ROM to Radeon RX 7600" >&2
       exit 1
     fi
 
