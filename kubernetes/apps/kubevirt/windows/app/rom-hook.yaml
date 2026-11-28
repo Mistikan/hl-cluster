@@ -14,9 +14,6 @@ data:
       chmod 0644 "$rom"
     fi
 
-    echo "Hash /rom/dummy.rom:"
-    sha256sum /rom/dummy.rom
-
     domain_xml=$(mktemp)
     printf '%s' "$4" > "$domain_xml"
     sed -i \
